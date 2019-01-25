@@ -58,4 +58,24 @@ public class DetailsActivityTest {
         onView(withId(R.id.profile_name)).check(matches(withText(profile.getDisplayName())));
     }
 
+    @Test
+    public void shouldShowDisplayParty() {
+        //setup
+
+        //execute
+
+        //check
+        onView(withId(R.id.profile_party)).check(matches(withText(profile.getParty())));
+    }
+
+    @Test
+    public void shouldShowDisplayTwitter() {
+        //setup
+
+        //execute
+
+        //check
+        onView(withId(R.id.profile_party)).check(matches(withText(profile.getTwitterAccount())));
+    }
+
 }
