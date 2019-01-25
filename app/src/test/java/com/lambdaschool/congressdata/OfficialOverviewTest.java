@@ -9,9 +9,9 @@ public class OfficialOverviewTest {
 
     private OfficialOverview officialOverview;
 
-    public static final String FIRST_NAME  = "firstName";
-    public static final String LAST_NAME   = "lastName";
-    public static final String MIDDLE_NAME = "middleName";
+    public static final String FIRST_NAME  = "firstname";
+    public static final String LAST_NAME   = "lastname";
+    public static final String MIDDLE_NAME = "middlelast";
     public static final String PARTY       = "party";
     public static final String STATE       = "state";
     public static final String ID          = "id";
@@ -24,6 +24,8 @@ public class OfficialOverviewTest {
     @Test
     public void shouldGetDisplayName() {
 
+        String result = FIRST_NAME + " " + MIDDLE_NAME + " " + LAST_NAME;
+        assertEquals(result, officialOverview.getDisplayName());
     }
 
     @Test

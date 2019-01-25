@@ -30,7 +30,8 @@ public class OfficialOverview {
 
     private String buildDisplayName() {
         StringBuilder nameBuilder = new StringBuilder();
-        nameBuilder.append(firstName);
+        //todo list bug
+        nameBuilder.append(firstName).append(" ");
         if (!middleName.equals("null")) {
             nameBuilder.append(middleName).append(" ");
         }
