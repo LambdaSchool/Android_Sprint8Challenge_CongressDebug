@@ -28,9 +28,9 @@ public class OfficialOverview {
         this.id = congresspersonOverview.getId();
     }
 
-    private String buildDisplayName() {
+    public String buildDisplayName() {
         StringBuilder nameBuilder = new StringBuilder();
-        nameBuilder.append(firstName);
+        nameBuilder.append(firstName).append(" ");
         if (!middleName.equals("null")) {
             nameBuilder.append(middleName).append(" ");
         }
