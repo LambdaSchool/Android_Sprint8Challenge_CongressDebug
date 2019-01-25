@@ -36,9 +36,13 @@ public class OfficialOverviewTest {
 
     @Test
     public void shouldGetParty() {
+        String result = PARTY;
+        assertEquals(result, officialOverview.getParty());
     }
 
     @Test
     public void shouldGetState() {
+        String result = STATE;
+        assertEquals(result, officialOverview.getState());
     }
 }
