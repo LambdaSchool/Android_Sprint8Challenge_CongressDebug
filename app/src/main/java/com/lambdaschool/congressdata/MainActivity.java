@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 
 /*public class MainActivity extends LifecycleActivity  {
@@ -42,13 +44,15 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView               layoutList;
+    private RecyclerView layoutList;
     private RecyclerView.LayoutManager layoutManager;
-    private OverviewListAdapter        listAdapter;
+    private OverviewListAdapter listAdapter;
 
-    private Context                     context;
+    private Context context;
     private CongresspersonListViewModel viewModel;
-    private Activity                    activity;
+    private Activity activity;
+
+//    private ArrayList<OfficialOverview> overviews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +77,6 @@ public class MainActivity extends AppCompatActivity {
             listAdapter = new OverviewListAdapter(overviewList);
             layoutList.setAdapter(listAdapter);
 
-            // using scroll view
-            /*for (OfficialOverview officialOverview : overviewList) {
-                scrollData.addView(getDefaultTextView(officialOverview.getDisplayName(),
-                                                      officialOverview.getId()));
-            }*/
         }));
     }
 
