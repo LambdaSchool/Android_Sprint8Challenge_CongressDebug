@@ -1,13 +1,9 @@
 package com.lambdaschool.congressdata;
 
-import android.app.Activity;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.provider.ContactsContract;
+import android.text.Html;
+import android.text.Spanned;
 
 import com.lambdaschool.congressdataapiaccess.CongressDao;
 
@@ -75,7 +71,7 @@ public class DetailsActivityTest {
         //execute
 
         //check
-        onView(withId(R.id.profile_district)).check(matches(withText(profile.getDistrict())));
+        onView(withId(R.id.profile_district)).check(matches(withText(profile.getLocation())));
     }
 
     @Test
@@ -83,9 +79,9 @@ public class DetailsActivityTest {
         //setup
 
         //execute
-
+        Spanned expected = Html.fromHtml("<a href=\"https://twitter.com/" + profile.getTwitterAccount() + "\">Twitter</a>");
         //check
-        onView(withId(R.id.profile_party)).check(matches(withText(profile.getTwitterAccount())));
+        onView(withId(R.id.profile_twitter)).check(matches(withText(expected.toString())));
     }
 
     @Test
@@ -93,9 +89,9 @@ public class DetailsActivityTest {
         //setup
 
         //execute
-
+        Spanned expected = Html.fromHtml("<a href=\"https://www.facebook.com/" + profile.getFacebookAccount() + "/\">Facebook</a>");
         //check
-        onView(withId(R.id.profile_party)).check(matches(withText(profile.getFacebookAccount())));
+        onView(withId(R.id.profile_facebook)).check(matches(withText(expected.toString())));
     }
 
 }
