@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void setTheme(int themeId) {
-        super.setTheme(themeId);
-        this.themeId = themeId;
+       super.setTheme(themeId);
+       this.themeId = themeId;
     }
 
     public int getThemeId() {
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailsActivity.class);
-                intent.putExtra("id", view.getTag().toString());
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
