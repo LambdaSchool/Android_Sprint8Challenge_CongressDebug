@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 
 /*public class MainActivity extends LifecycleActivity  {
@@ -66,19 +68,21 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(CongresspersonListViewModel.class);
 
-        viewModel.getOverviewList().observe(this, overviewList -> runOnUiThread(() -> {
-            assert overviewList != null;
+        viewModel.getOverviewList().observe(this, (ArrayList<OfficialOverview> overviewList) -> {
+            runOnUiThread(() -> {
+                assert overviewList != null;
 
-            // using recycler view
-            listAdapter = new OverviewListAdapter(overviewList);
-            layoutList.setAdapter(listAdapter);
+                // using recycler view
+                listAdapter = new OverviewListAdapter(overviewList);
+                layoutList.setAdapter(listAdapter);
 
-            // using scroll view
-            /*for (OfficialOverview officialOverview : overviewList) {
-                scrollData.addView(getDefaultTextView(officialOverview.getDisplayName(),
-                                                      officialOverview.getId()));
-            }*/
-        }));
+                // using scroll view
+                /*for (OfficialOverview officialOverview : overviewList) {
+                    scrollData.addView(getDefaultTextView(officialOverview.getDisplayName(),
+                                                          officialOverview.getId()));
+                }*/
+            });
+        });
     }
 
     private int themeId;

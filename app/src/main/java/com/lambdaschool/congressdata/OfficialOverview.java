@@ -31,11 +31,18 @@ public class OfficialOverview {
     private String buildDisplayName() {
         StringBuilder nameBuilder = new StringBuilder();
         nameBuilder.append(firstName);
-        if (!middleName.equals("null")) {
-            nameBuilder.append(middleName).append(" ");
+
+        //TODO - Middle name not given necessary space.
+        //Changed: if statement to give proper spacing;
+        if (middleName.equals("null")) {
+            nameBuilder.append(" ").append(lastName);
+        } else {
+            nameBuilder.append(" ").append(middleName).append(" ").append(lastName);
         }
-        nameBuilder.append(lastName);
-        return nameBuilder.toString().toLowerCase();
+
+        //TODO - Display Name is being sent lowercased.
+        //Changed: return nameBuilder.toString().toLowerCase();
+        return nameBuilder.toString();
     }
 
     public String getDisplayName() {
