@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        activity = this;
-        themeUtils.onActivityCreateSetTheme(activity);
+
+//        themeUtils.onActivityCreateSetTheme(activity);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        activity = this;
         context = this;
         layoutList = findViewById(R.id.layout_list);
         layoutList.setHasFixedSize(true);
@@ -46,14 +46,16 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(CongresspersonListViewModel.class);
 
-        viewModel.getOverviewList().observe(this, (ArrayList<OfficialOverview> overviewList) -> runOnUiThread(() -> {
-            assert overviewList != null;
+        viewModel.getOverviewList().observe(this, (ArrayList<OfficialOverview> overviewList) -> {
+            runOnUiThread(() -> {
+                assert overviewList != null;
 
-            // using recycler view
-            listAdapter = new OverviewListAdapter(overviewList);
-            layoutList.setAdapter(listAdapter);
+                // using recycler view
+                listAdapter = new OverviewListAdapter(overviewList);
+                layoutList.setAdapter(listAdapter);
 
-        }));
+            });
+        });
     }
 
     private int themeId;
@@ -67,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
     public int getThemeId() {
         return themeId;
     }
+
+
 
 
     /**
@@ -85,13 +89,10 @@ public class MainActivity extends AppCompatActivity {
         dataView.setText(text);
         dataView.setTag(id);
 
-        dataView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, DetailsActivity.class);
-                intent.putExtra("id", id);
-                startActivity(intent);
-            }
+        dataView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, DetailsActivity.class);
+            intent.putExtra("id", id);
+            startActivity(intent);
         });
         return dataView;
     }
