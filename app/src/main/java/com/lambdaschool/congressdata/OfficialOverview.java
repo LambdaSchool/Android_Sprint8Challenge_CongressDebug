@@ -36,7 +36,8 @@ public class OfficialOverview {
             nameBuilder.append(middleName).append(" ");
         }
         nameBuilder.append(lastName);
-        return nameBuilder.toString().toLowerCase();
+        // todo list bug
+        return nameBuilder.toString();
     }
 
     public String getDisplayName() {
