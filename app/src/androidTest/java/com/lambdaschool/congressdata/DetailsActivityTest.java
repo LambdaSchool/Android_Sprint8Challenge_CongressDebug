@@ -79,9 +79,9 @@ public class DetailsActivityTest {
         //setup
 
         //execute
-        Spanned expected = Html.fromHtml("<a href=\"https://twitter.com/" + profile.getTwitterAccount() + "\">Twitter</a>");
+        String expected = Html.fromHtml("<a href=\"https://twitter.com/" + profile.getTwitterAccount() + "\">Twitter</a>").toString();
         //check
-        onView(withId(R.id.profile_twitter)).check(matches(withText(expected.toString())));
+        onView(withId(R.id.profile_twitter)).check(matches(withText(expected)));
     }
 
     @Test
@@ -89,9 +89,9 @@ public class DetailsActivityTest {
         //setup
 
         //execute
-        Spanned expected = Html.fromHtml("<a href=\"https://www.facebook.com/" + profile.getFacebookAccount() + "/\">Facebook</a>");
+        String expected = Html.fromHtml("<a href=\"https://www.facebook.com/" + profile.getFacebookAccount() + "/\">Facebook</a>").toString();
         //check
-        onView(withId(R.id.profile_facebook)).check(matches(withText(expected.toString())));
+        onView(withId(R.id.profile_facebook)).check(matches(withText(expected)));
     }
 
 }
