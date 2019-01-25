@@ -141,6 +141,15 @@ public class CongresspersonOverview {
         this.votesWithPartyPct = votesWithPartyPct;
     }
 
+    public CongresspersonOverview(String firstName, String middleName, String lastName, String party, String state, String id){
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.party = party;
+        this.state = state;
+        this.id = id;
+    }
+
     public CongresspersonOverview(JSONObject jsonObject) {
         this.id = CongressDao.getStringFromJson(jsonObject, "id");
         this.title = CongressDao.getStringFromJson(jsonObject, "title");

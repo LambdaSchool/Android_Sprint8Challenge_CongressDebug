@@ -1,5 +1,7 @@
 package com.lambdaschool.congressdata;
 
+import com.lambdaschool.congressdataapiaccess.CongresspersonOverview;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -58,6 +60,24 @@ public class OfficialOverviewTest {
         String state = "state";
 
         assertEquals(STATE, state);
+    }
+
+    @Test
+    public void shouldConstructOfficialOverviewFromCongresspersonOverview(){
+        CongresspersonOverview congresspersonOverview = new CongresspersonOverview(
+                FIRST_NAME, MIDDLE_NAME, LAST_NAME, PARTY, STATE, ID);
+
+        OfficialOverview officialOverview = new OfficialOverview(congresspersonOverview);
+        String displayName = officialOverview.getDisplayName();
+        String id = officialOverview.getId();
+        String party = officialOverview.getParty();
+        String state = officialOverview.getState();
+
+        assertEquals("firstname middlename lastname", displayName);
+        assertEquals(ID, id);
+        assertEquals(PARTY, party);
+        assertEquals(STATE, state);
+        
     }
 
 }
