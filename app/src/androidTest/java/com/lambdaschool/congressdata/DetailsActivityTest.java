@@ -38,4 +38,9 @@ public class DetailsActivityTest {
     public void shouldDisplayCorrectParty(){
         onView(withId(R.id.profile_party)).check(matches(withText("Republican")));
     }
+
+    @Test
+    public void shouldDisplayCorrectStateAndDistrict(){
+        onView(withId(R.id.profile_district)).check(matches(withText("GA - District 12")));
+    }
 }
