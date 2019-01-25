@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Trace;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -94,21 +95,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
+    /*@Override
     protected void onStart() {
         if (getThemeId() != themeUtils.getcTheme(activity)) {
             themeUtils.refreshActivity(activity);
         }
         super.onStart();
-    }
+    }*/
 
-    @Override
+    /*@Override
     protected void onResume() {
         if (getThemeId() != themeUtils.getcTheme(activity)) {
             themeUtils.refreshActivity(activity);
         }
         super.onResume();
-    }
+    }*/
 
     /**
      * This method generates default TextView objects for the congressperson list in this activity.

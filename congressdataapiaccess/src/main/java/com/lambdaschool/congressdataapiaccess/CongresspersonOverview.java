@@ -3,7 +3,9 @@ package com.lambdaschool.congressdataapiaccess;
 
 import org.json.JSONObject;
 
-public class CongresspersonOverview {
+import java.io.Serializable;
+
+public class CongresspersonOverview implements Serializable {
 
     // SerializedName("id")
     private String id;
@@ -139,6 +141,15 @@ public class CongresspersonOverview {
         this.lisId = lisId;
         this.missedVotesPct = missedVotesPct;
         this.votesWithPartyPct = votesWithPartyPct;
+    }
+
+    public CongresspersonOverview(String firstName, String middleName, String lastName, String party, String state, String id){
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.party = party;
+        this.state = state;
+        this.id = id;
     }
 
     public CongresspersonOverview(JSONObject jsonObject) {
