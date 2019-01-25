@@ -9,13 +9,14 @@ import static org.junit.Assert.*;
 
 public class OfficialOverviewTest {
 
-    public static final String FIRST_NAME = "firstName";
-    public static final String MIDDLE_NAME = "middleName";
-    public static final String LAST_NAME = "lastName";
-    public static final String PARTY = "party";
-    public static final String STATE = "state";
-    public static final String ID = "id";
-    OfficialOverview officialOverview;
+    private static final String FIRST_NAME = "firstName";
+    private static final String MIDDLE_NAME = "middleName";
+    private static final String LAST_NAME = "lastName";
+    private static final String PARTY = "party";
+    private static final String STATE = "state";
+    private static final String ID = "id";
+
+    private OfficialOverview officialOverview;
 
     @Before
     public void setUp() throws Exception {
@@ -77,7 +78,7 @@ public class OfficialOverviewTest {
         assertEquals(ID, id);
         assertEquals(PARTY, party);
         assertEquals(STATE, state);
-        
+
     }
 
 }
