@@ -62,4 +62,9 @@ public class DetailsActivityTest {
     public void shouldClickOnOfficeLinkAndOpen(){
         onView(withId(R.id.profile_map)).perform(openLinkWithText("Office"));
     }
+
+    @Test
+    public void shouldDisplayCorrectPhoneNumber(){
+        onView(withId(R.id.profile_phone)).check(matches(withText("202-225-2823")));
+    }
 }
