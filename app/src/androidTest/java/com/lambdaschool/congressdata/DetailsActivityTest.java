@@ -6,9 +6,13 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import androidx.test.espresso.Espresso;
+import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.openLinkWithText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -42,5 +46,10 @@ public class DetailsActivityTest {
     @Test
     public void shouldDisplayCorrectStateAndDistrict(){
         onView(withId(R.id.profile_district)).check(matches(withText("GA - District 12")));
+    }
+
+    @Test
+    public void shouldDisplayCorrectTwitter(){
+        onView(withId(R.id.profile_twitter)).perform(openLinkWithText("Twitter"));
     }
 }
