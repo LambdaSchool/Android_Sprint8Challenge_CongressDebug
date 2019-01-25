@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.lambdaschool.congressdataapiaccess.CongresspersonOverview;
+
 public class DetailsActivity extends AppCompatActivity {
 
     private Context context;
@@ -47,7 +49,8 @@ public class DetailsActivity extends AppCompatActivity {
         context = this;
 
         Intent intent = getIntent();
-        memberId = intent.getStringExtra("id");
+        CongresspersonOverview congresspersonOverview = (CongresspersonOverview)intent.getSerializableExtra("overview");
+        memberId = congresspersonOverview.getId();
 
         viewModel = ViewModelProviders.of(this).get(CongresspersonProfileViewModel.class);
 

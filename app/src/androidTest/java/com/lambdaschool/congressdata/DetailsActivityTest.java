@@ -1,14 +1,19 @@
 package com.lambdaschool.congressdata;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+
+import com.lambdaschool.congressdataapiaccess.CongressDao;
+import com.lambdaschool.congressdataapiaccess.CongresspersonOverview;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import androidx.test.espresso.Espresso;
-import androidx.test.espresso.action.ViewActions;
-import androidx.test.espresso.matcher.ViewMatchers;
+import java.io.Serializable;
+
 import androidx.test.rule.ActivityTestRule;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -16,10 +21,8 @@ import static androidx.test.espresso.action.ViewActions.openLinkWithText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.*;
 
 public class DetailsActivityTest {
-
 
     @Rule
     public ActivityTestRule<DetailsActivity> activityTestRule
@@ -28,7 +31,9 @@ public class DetailsActivityTest {
     @Before
     public void setUp() throws Exception {
         Intent intent = new Intent();
-        intent.putExtra("id", "A000372");
+        CongresspersonOverview congresspersonOverview = new CongresspersonOverview(
+                "Rick",  null,  "Allen",  "R",  "Georgia",  "A000372");
+        intent.putExtra("overview", congresspersonOverview);
         activityTestRule.launchActivity(intent);
     }
 
@@ -67,4 +72,5 @@ public class DetailsActivityTest {
     public void shouldDisplayCorrectPhoneNumber(){
         onView(withId(R.id.profile_phone)).check(matches(withText("202-225-2823")));
     }
+
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class OverviewListAdapter extends RecyclerView.Adapter<OverviewListAdapter.ViewHolder> {
@@ -56,7 +57,7 @@ public class OverviewListAdapter extends RecyclerView.Adapter<OverviewListAdapte
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailsActivity.class);
-                intent.putExtra("id", view.getTag().toString());
+                intent.putExtra("overview", (Serializable) data);
                 context.startActivity(intent);
             }
         });

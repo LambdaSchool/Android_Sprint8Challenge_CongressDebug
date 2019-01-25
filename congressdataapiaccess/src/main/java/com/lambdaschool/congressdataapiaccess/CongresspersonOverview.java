@@ -3,7 +3,9 @@ package com.lambdaschool.congressdataapiaccess;
 
 import org.json.JSONObject;
 
-public class CongresspersonOverview {
+import java.io.Serializable;
+
+public class CongresspersonOverview implements Serializable {
 
     // SerializedName("id")
     private String id;
