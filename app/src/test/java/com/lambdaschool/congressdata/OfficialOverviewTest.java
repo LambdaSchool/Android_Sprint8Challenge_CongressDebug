@@ -33,9 +33,6 @@ public class OfficialOverviewTest {
 
     @Test
     public void shouldBuildDisplayName(){
-        String fName = "firstName";
-        String mName = "middleName";
-        String lName = "lastName";
         String fullName = officialOverview.buildDisplayName();
 
         assertEquals("firstname middlename lastname", fullName);
