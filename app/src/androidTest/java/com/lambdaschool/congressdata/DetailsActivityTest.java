@@ -32,4 +32,10 @@ public class DetailsActivityTest {
     public void shouldDisplayFullName(){
         onView(withId(R.id.profile_name)).check(matches(withText("Rick Allen")));
     }
+
+
+    @Test
+    public void shouldDisplayCorrectParty(){
+        onView(withId(R.id.profile_party)).check(matches(withText("Republican")));
+    }
 }
