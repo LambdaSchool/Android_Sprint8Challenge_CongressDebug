@@ -49,4 +49,12 @@ public class DetailsActivityTest {
        // onView(withId(R.id.profile_name)).check(matches(withText(profile.getDisplayName())));
 
     }
+
+    @Test
+    public void shouldShowPart(){
+        ViewInteraction outPut = onView(withId(R.id.profile_party));
+        outPut.check(matches(ViewMatchers.withText(profile.getParty())));
+
+        // onView(withId(R.id.profile_party)).check(matches(withText(profile.getParty())));
+    }
 }
