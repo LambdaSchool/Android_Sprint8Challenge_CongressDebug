@@ -18,30 +18,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-
-
-/*public class MainActivity extends LifecycleActivity  {
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ListView listView = (ListView) findViewById(R.id.list);
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbar);
-        progressBar.setVisibility(View.VISIBLE);
-        MainActivityViewModel model = ViewModelProviders.of(this).get(MainActivityViewModel.class);
-        model.getFruitList().observe(this, fruitlist -> {
-            // update UI
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_list_item_1, android.R.id.text1, fruitlist);
-            // Assign adapter to ListView
-            listView.setAdapter(adapter);
-            progressBar.setVisibility(View.GONE);
-        });
-    }
-}*/
-
-
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView               layoutList;
@@ -56,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         activity = this;
         themeUtils.onActivityCreateSetTheme(activity);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         context = this;
         layoutList = findViewById(R.id.layout_list);
@@ -68,21 +46,14 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(CongresspersonListViewModel.class);
 
-        viewModel.getOverviewList().observe(this, (ArrayList<OfficialOverview> overviewList) -> {
-            runOnUiThread(() -> {
-                assert overviewList != null;
+        viewModel.getOverviewList().observe(this, (ArrayList<OfficialOverview> overviewList) -> runOnUiThread(() -> {
+            assert overviewList != null;
 
-                // using recycler view
-                listAdapter = new OverviewListAdapter(overviewList);
-                layoutList.setAdapter(listAdapter);
+            // using recycler view
+            listAdapter = new OverviewListAdapter(overviewList);
+            layoutList.setAdapter(listAdapter);
 
-                // using scroll view
-                /*for (OfficialOverview officialOverview : overviewList) {
-                    scrollData.addView(getDefaultTextView(officialOverview.getDisplayName(),
-                                                          officialOverview.getId()));
-                }*/
-            });
-        });
+        }));
     }
 
     private int themeId;
@@ -97,22 +68,6 @@ public class MainActivity extends AppCompatActivity {
         return themeId;
     }
 
-
-    @Override
-    protected void onStart() {
-        if (getThemeId() != themeUtils.getcTheme(activity)) {
-            themeUtils.refreshActivity(activity);
-        }
-        super.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-        if (getThemeId() != themeUtils.getcTheme(activity)) {
-            themeUtils.refreshActivity(activity);
-        }
-        super.onResume();
-    }
 
     /**
      * This method generates default TextView objects for the congressperson list in this activity.
