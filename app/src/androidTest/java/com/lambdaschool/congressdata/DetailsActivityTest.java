@@ -57,4 +57,12 @@ public class DetailsActivityTest {
 
         // onView(withId(R.id.profile_party)).check(matches(withText(profile.getParty())));
     }
+
+    @Test
+    public void shouldShowDistrict(){
+        ViewInteraction outPut = onView(withId(R.id.profile_district));
+        outPut.check(matches(ViewMatchers.withText(profile.getLocation())));
+
+        // onView(withId(R.id.profile_district)).check(matches(withText(profile.getDistrict())));
+    }
 }
