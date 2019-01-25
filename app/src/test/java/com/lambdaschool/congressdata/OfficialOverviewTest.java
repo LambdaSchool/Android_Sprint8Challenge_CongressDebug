@@ -38,5 +38,11 @@ public class OfficialOverviewTest {
         assertEquals("firstname middlename lastname", fullName);
     }
 
+    @Test
+    public void shouldGetId(){
+        String id = "id";
+
+        assertEquals(ID, id);
+    }
 
 }
