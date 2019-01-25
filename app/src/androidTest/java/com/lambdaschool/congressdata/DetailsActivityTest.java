@@ -49,17 +49,17 @@ public class DetailsActivityTest {
     }
 
     @Test
-    public void shouldDisplayCorrectTwitter(){
+    public void shouldClickOnTwitterLinkAndOpen(){
         onView(withId(R.id.profile_twitter)).perform(openLinkWithText("Twitter"));
     }
 
     @Test
-    public void shouldDisplayCorrectFacebook(){
+    public void shouldClickOnFacebookLinkAndOpen(){
         onView(withId(R.id.profile_facebook)).perform(openLinkWithText("Facebook"));
     }
 
     @Test
-    public void shouldDisplayOffice(){
+    public void shouldClickOnOfficeLinkAndOpen(){
         onView(withId(R.id.profile_map)).perform(openLinkWithText("Office"));
     }
 }
