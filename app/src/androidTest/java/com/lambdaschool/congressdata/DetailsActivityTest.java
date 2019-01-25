@@ -52,4 +52,9 @@ public class DetailsActivityTest {
     public void shouldDisplayCorrectTwitter(){
         onView(withId(R.id.profile_twitter)).perform(openLinkWithText("Twitter"));
     }
+
+    @Test
+    public void shouldDisplayCorrectFacebook(){
+        onView(withId(R.id.profile_facebook)).perform(openLinkWithText("Facebook"));
+    }
 }
