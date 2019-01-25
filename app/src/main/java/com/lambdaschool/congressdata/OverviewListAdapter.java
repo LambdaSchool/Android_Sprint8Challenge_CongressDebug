@@ -56,7 +56,7 @@ public class OverviewListAdapter extends RecyclerView.Adapter<OverviewListAdapte
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailsActivity.class);
-                intent.putExtra("id", view.getTag().toString());
+                intent.putExtra(DetailsActivity.DETAILS_INTENT_TAG, view.getTag().toString());
                 context.startActivity(intent);
             }
         });

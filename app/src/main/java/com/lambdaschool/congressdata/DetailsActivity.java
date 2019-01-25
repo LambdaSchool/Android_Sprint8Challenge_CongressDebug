@@ -17,23 +17,24 @@ import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
 
+    public static final String DETAILS_INTENT_TAG = "id";
     private Context context;
 
-    private ImageView     profileImage;
-    private TextView      profileName;
-    private TextView      profileParty;
-    private TextView      profileDistrict;
-    private TextView      profileTwitter;
-    private TextView      profileFacebook;
-    private TextView      profileMap;
-    private TextView      profilePhone;
-    private ProgressBar   profileVotingBar;
-    private LinearLayout  profileCommitteeList;
-    private LinearLayout  profileSubcommitteeList;
+    private ImageView profileImage;
+    private TextView profileName;
+    private TextView profileParty;
+    private TextView profileDistrict;
+    private TextView profileTwitter;
+    private TextView profileFacebook;
+    private TextView profileMap;
+    private TextView profilePhone;
+    private ProgressBar profileVotingBar;
+    private LinearLayout profileCommitteeList;
+    private LinearLayout profileSubcommitteeList;
 
     private Activity activity;
 
-    private String                memberId;
+    private String memberId;
 
     private CongresspersonProfileViewModel viewModel;
 
@@ -47,24 +48,24 @@ public class DetailsActivity extends AppCompatActivity {
         context = this;
 
         Intent intent = getIntent();
-        memberId = intent.getStringExtra("id");
+        memberId = intent.getStringExtra(DETAILS_INTENT_TAG);
 
         viewModel = ViewModelProviders.of(this).get(CongresspersonProfileViewModel.class);
 
-        profileImage            = findViewById(R.id.profile_image);
-        profileName             = findViewById(R.id.profile_name);
-        profileParty            = findViewById(R.id.profile_party);
-        profileDistrict         = findViewById(R.id.profile_district);
-        profileTwitter          = findViewById(R.id.profile_twitter);
-        profileFacebook         = findViewById(R.id.profile_facebook);
-        profileMap              = findViewById(R.id.profile_map);
-        profilePhone            = findViewById(R.id.profile_phone);
-        profileVotingBar        = findViewById(R.id.profile_voting_bar);
-        profileCommitteeList    = findViewById(R.id.profile_committee_list);
+        profileImage = findViewById(R.id.profile_image);
+        profileName = findViewById(R.id.profile_name);
+        profileParty = findViewById(R.id.profile_party);
+        profileDistrict = findViewById(R.id.profile_district);
+        profileTwitter = findViewById(R.id.profile_twitter);
+        profileFacebook = findViewById(R.id.profile_facebook);
+        profileMap = findViewById(R.id.profile_map);
+        profilePhone = findViewById(R.id.profile_phone);
+        profileVotingBar = findViewById(R.id.profile_voting_bar);
+        profileCommitteeList = findViewById(R.id.profile_committee_list);
         profileSubcommitteeList = findViewById(R.id.profile_subcommittee_list);
 
 
-        ((TextView)findViewById(R.id.profile_name)).setOnClickListener(new View.OnClickListener() {
+        ((TextView) findViewById(R.id.profile_name)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 themeUtils.nextTheme(activity);
@@ -93,18 +94,18 @@ public class DetailsActivity extends AppCompatActivity {
             profileVotingBar.setProgress((int) profile.getPrimaryProgress());
             profileVotingBar.setSecondaryProgress((int) profile.getSecondaryProgress());
 
-            for(String name: profile.getCommittees()) {
+            for (String name : profile.getCommittees()) {
                 profileCommitteeList.addView(getDefaultTextView(name));
             }
 
-            for(String name: profile.getSubcommittees()) {
+            for (String name : profile.getSubcommittees()) {
                 profileSubcommitteeList.addView(getDefaultTextView(name));
             }
 
             profileTwitter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!profile.getTwitterAccount().equals("null")) {
+                    if (!profile.getTwitterAccount().equals("null")) {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + profile.getTwitterAccount())));
                     }
                 }
@@ -112,7 +113,7 @@ public class DetailsActivity extends AppCompatActivity {
             profileFacebook.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!profile.getFacebookAccount().equals("null")) {
+                    if (!profile.getFacebookAccount().equals("null")) {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + profile.getFacebookAccount())));
                     }
                 }
@@ -120,7 +121,7 @@ public class DetailsActivity extends AppCompatActivity {
             profileMap.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!profile.getOffice().equals("null")) {
+                    if (!profile.getOffice().equals("null")) {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/" + profile.getOffice())));
                     }
                 }
