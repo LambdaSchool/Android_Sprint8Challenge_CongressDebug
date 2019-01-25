@@ -45,4 +45,12 @@ public class OfficialOverviewTest {
         assertEquals(ID, id);
     }
 
+
+    @Test
+    public void shouldGetParty(){
+        String party = "party";
+
+        assertEquals(PARTY, party);
+    }
+
 }
