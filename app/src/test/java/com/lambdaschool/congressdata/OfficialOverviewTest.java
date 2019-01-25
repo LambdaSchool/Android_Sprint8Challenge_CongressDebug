@@ -53,4 +53,11 @@ public class OfficialOverviewTest {
         assertEquals(PARTY, party);
     }
 
+    @Test
+    public void shouldGetState(){
+        String state = "state";
+
+        assertEquals(STATE, state);
+    }
+
 }
