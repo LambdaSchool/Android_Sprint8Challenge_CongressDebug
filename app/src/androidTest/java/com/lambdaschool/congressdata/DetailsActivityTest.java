@@ -26,8 +26,6 @@ public class DetailsActivityTest {
     Context context;
 
     @Rule
-    public ActivityTestRule<MainActivity> mainActivityTestRule = new ActivityTestRule<>(MainActivity.class, false, true);
-    @Rule
     public ActivityTestRule<DetailsActivity> activityTestRule = new ActivityTestRule<>(DetailsActivity.class, false, false);
 
     @Before
