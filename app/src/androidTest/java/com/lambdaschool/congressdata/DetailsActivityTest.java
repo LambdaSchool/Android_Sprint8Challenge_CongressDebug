@@ -69,6 +69,16 @@ public class DetailsActivityTest {
     }
 
     @Test
+    public void shouldDisplayDistrict() {
+        //setup
+
+        //execute
+
+        //check
+        onView(withId(R.id.profile_district)).check(matches(withText(profile.getDistrict())));
+    }
+
+    @Test
     public void shouldShowDisplayTwitter() {
         //setup
 
@@ -76,6 +86,16 @@ public class DetailsActivityTest {
 
         //check
         onView(withId(R.id.profile_party)).check(matches(withText(profile.getTwitterAccount())));
+    }
+
+    @Test
+    public void shouldShowDisplayFacebook() {
+        //setup
+
+        //execute
+
+        //check
+        onView(withId(R.id.profile_party)).check(matches(withText(profile.getFacebookAccount())));
     }
 
 }
