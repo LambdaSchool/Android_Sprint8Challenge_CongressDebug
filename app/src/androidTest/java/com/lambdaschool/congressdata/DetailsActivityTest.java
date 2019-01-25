@@ -16,6 +16,7 @@ import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
 import static androidx.test.espresso.Espresso.*;
+import static androidx.test.espresso.action.ViewActions.openLinkWithText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
 
@@ -63,6 +64,21 @@ public class DetailsActivityTest {
         ViewInteraction outPut = onView(withId(R.id.profile_district));
         outPut.check(matches(ViewMatchers.withText(profile.getLocation())));
 
-        // onView(withId(R.id.profile_district)).check(matches(withText(profile.getDistrict())));
+         //onView(withId(R.id.profile_district)).check(matches(withText(profile.getLocation())));
+    }
+
+    @Test
+    public void shouldOpenTwitter(){
+        onView(withId(R.id.profile_twitter)).perform(openLinkWithText("Twitter"));
+    }
+
+    @Test
+    public void shouldOpenFacebook(){
+        onView(withId(R.id.profile_facebook)).perform(openLinkWithText("Facebook"));
+    }
+
+    @Test
+    public void shouldOpenMap(){
+        onView(withId(R.id.profile_map)).perform(openLinkWithText("Office"));
     }
 }
