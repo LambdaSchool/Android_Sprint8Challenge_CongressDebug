@@ -33,7 +33,6 @@ public class DetailsActivityTest {
     @Before
     public void setUp() throws Exception {
         profile = new CongresspersonProfile(CongressDao.getMemberDetails("A000374"));
-        profile.setImage(CongressDao.getImage(profile.getId()));
 
         intent = new Intent();
         intent.putExtra("id", profile.getId());
