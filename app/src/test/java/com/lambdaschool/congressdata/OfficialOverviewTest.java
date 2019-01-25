@@ -22,18 +22,19 @@ public class OfficialOverviewTest {
     }
 
     @Test
-    public void getDisplayName() {
+    public void shouldGetDisplayName() {
+
     }
 
     @Test
-    public void getId() {
+    public void shouldGetId() {
     }
 
     @Test
-    public void getParty() {
+    public void shouldGetParty() {
     }
 
     @Test
-    public void getState() {
+    public void shouldGetState() {
     }
 }
