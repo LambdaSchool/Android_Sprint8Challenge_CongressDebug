@@ -30,6 +30,8 @@ public class OfficialOverviewTest {
 
     @Test
     public void shouldGetId() {
+        String result = ID;
+        assertEquals(result, officialOverview.getId());
     }
 
     @Test
