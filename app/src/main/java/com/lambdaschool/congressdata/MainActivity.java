@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         activity = this;
-        themeUtils.onActivityCreateSetTheme(activity);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -54,11 +53,6 @@ public class MainActivity extends AppCompatActivity {
             listAdapter = new OverviewListAdapter(overviewList);
             layoutList.setAdapter(listAdapter);
 
-            // using scroll view
-            /*for (OfficialOverview officialOverview : overviewList) {
-                scrollData.addView(getDefaultTextView(officialOverview.getDisplayName(),
-                                                      officialOverview.getId()));
-            }*/
         }));
     }
 
