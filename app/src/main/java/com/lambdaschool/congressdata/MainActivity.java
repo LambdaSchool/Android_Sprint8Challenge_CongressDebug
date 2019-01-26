@@ -84,31 +84,4 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onResume();
     }
-
-    /**
-     * This method generates default TextView objects for the congressperson list in this activity.
-     *
-     * @param text display name for the congressperson
-     * @param id   api id for the congressperson
-     * @return TextView object with the text and tag set as provided
-     */
-    @NonNull
-    private TextView getDefaultTextView(String text, String id) {
-        TextView dataView = new TextView(context);
-        dataView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
-        dataView.setPadding(10, 20, 10, 20);
-        dataView.setTypeface(Typeface.DEFAULT_BOLD);
-        dataView.setText(text);
-        dataView.setTag(id);
-
-        dataView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, DetailsActivity.class);
-                intent.putExtra("id", view.getTag().toString());
-                startActivity(intent);
-            }
-        });
-        return dataView;
-    }
 }
