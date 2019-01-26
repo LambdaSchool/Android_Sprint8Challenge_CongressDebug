@@ -18,26 +18,7 @@ import android.widget.TextView;
 
 
 
-/*public class MainActivity extends LifecycleActivity  {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ListView listView = (ListView) findViewById(R.id.list);
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbar);
-        progressBar.setVisibility(View.VISIBLE);
-        MainActivityViewModel model = ViewModelProviders.of(this).get(MainActivityViewModel.class);
-        model.getFruitList().observe(this, fruitlist -> {
-            // update UI
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_list_item_1, android.R.id.text1, fruitlist);
-            // Assign adapter to ListView
-            listView.setAdapter(adapter);
-            progressBar.setVisibility(View.GONE);
-        });
-    }
-}*/
 
 
 public class MainActivity extends AppCompatActivity {
@@ -53,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         activity = this;
-        themeUtils.onActivityCreateSetTheme(activity);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -73,11 +53,6 @@ public class MainActivity extends AppCompatActivity {
             listAdapter = new OverviewListAdapter(overviewList);
             layoutList.setAdapter(listAdapter);
 
-            // using scroll view
-            /*for (OfficialOverview officialOverview : overviewList) {
-                scrollData.addView(getDefaultTextView(officialOverview.getDisplayName(),
-                                                      officialOverview.getId()));
-            }*/
         }));
     }
 
@@ -108,32 +83,5 @@ public class MainActivity extends AppCompatActivity {
             themeUtils.refreshActivity(activity);
         }
         super.onResume();
-    }
-
-    /**
-     * This method generates default TextView objects for the congressperson list in this activity.
-     *
-     * @param text display name for the congressperson
-     * @param id   api id for the congressperson
-     * @return TextView object with the text and tag set as provided
-     */
-    @NonNull
-    private TextView getDefaultTextView(String text, String id) {
-        TextView dataView = new TextView(context);
-        dataView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
-        dataView.setPadding(10, 20, 10, 20);
-        dataView.setTypeface(Typeface.DEFAULT_BOLD);
-        dataView.setText(text);
-        dataView.setTag(id);
-
-        dataView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, DetailsActivity.class);
-                intent.putExtra("id", view.getTag().toString());
-                startActivity(intent);
-            }
-        });
-        return dataView;
     }
 }
