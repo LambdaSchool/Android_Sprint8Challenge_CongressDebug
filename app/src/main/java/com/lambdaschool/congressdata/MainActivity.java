@@ -27,16 +27,16 @@ public class MainActivity extends AppCompatActivity {
     private Context                     context;
     private CongresspersonListViewModel viewModel;
     private Activity                    activity;
+    private int themeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-//        themeUtils.onActivityCreateSetTheme(activity);
-
         super.onCreate(savedInstanceState);
+        activity = this;
+        themeUtils.onActivityCreateSetTheme(activity);
         setContentView(R.layout.activity_main);
 
-        activity = this;
+
         context = this;
         layoutList = findViewById(R.id.layout_list);
         layoutList.setHasFixedSize(true);
@@ -46,19 +46,17 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(CongresspersonListViewModel.class);
 
-        viewModel.getOverviewList().observe(this, (ArrayList<OfficialOverview> overviewList) -> {
-            runOnUiThread(() -> {
-                assert overviewList != null;
+        viewModel.getOverviewList().observe(this, overviewList -> runOnUiThread(() -> {
+            assert overviewList != null;
 
-                // using recycler view
-                listAdapter = new OverviewListAdapter(overviewList);
-                layoutList.setAdapter(listAdapter);
+            // using recycler view
+            listAdapter = new OverviewListAdapter(overviewList);
+            layoutList.setAdapter(listAdapter);
 
-            });
-        });
+        }));
     }
 
-    private int themeId;
+
 
     @Override
     public void setTheme(int themeId) {
@@ -68,6 +66,20 @@ public class MainActivity extends AppCompatActivity {
 
     public int getThemeId() {
         return themeId;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (getThemeId() != themeUtils.getcTheme(activity)) {
+            themeUtils.refreshActivity(activity);
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
 

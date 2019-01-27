@@ -11,7 +11,7 @@ public class CongresspersonProfileViewModel extends ViewModel {
         this.id = id;
     }
 
-    public LiveData<CongresspersonProfile> getProfile() {
+    public LiveData<CongresspersonProfile>  getProfile() {
         if (profile == null) {
             loadProfile();
         }
