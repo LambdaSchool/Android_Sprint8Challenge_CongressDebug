@@ -110,13 +110,13 @@ public class CongresspersonProfile {
     }
 
     private String buildDisplayName() {
-        StringBuilder nameBuilder = new StringBuilder();
-        nameBuilder.append(firstName).append(" ");
-        if (!middleName.equals("null")) {
-            nameBuilder.append(middleName).append(" ");
+        String displayName;
+        if (middleName.equals("null")) {
+            displayName = firstName + " " + lastName;
+        } else {
+            displayName = firstName + " " + middleName + " "  + lastName;
         }
-        nameBuilder.append(lastName);
-        return nameBuilder.toString();
+        return displayName;
     }
 
     public float getPrimaryProgress() {
