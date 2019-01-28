@@ -29,20 +29,13 @@ public class OfficialOverview {
     }
 
     private String buildDisplayName() {
-        StringBuilder nameBuilder = new StringBuilder();
-        nameBuilder.append(firstName);
-
-        //TODO - Middle name not given necessary space.
-        //Changed: if statement to give proper spacing;
+        String displayName;
         if (middleName.equals("null")) {
-            nameBuilder.append(" ").append(lastName);
+            displayName = firstName + " " + lastName;
         } else {
-            nameBuilder.append(" ").append(middleName).append(" ").append(lastName);
+            displayName = firstName + " " + middleName + " "  + lastName;
         }
-
-        //TODO - Display Name is being sent lowercased.
-        //Changed: return nameBuilder.toString().toLowerCase();
-        return nameBuilder.toString();
+        return displayName;
     }
 
     public String getDisplayName() {
