@@ -18,5 +18,20 @@ public class OfficialOverviewTest {
 
         assertEquals(expectedValue, officialOverview.getDisplayName());
     }
+ @Test public void shouldDisplayParty(){
+        String expectedValue = "Party";
+
+        assertEquals(expectedValue, officialOverview.getParty());
+    }
+ @Test public void shouldDisplayState(){
+        String expectedValue = "State";
+
+        assertEquals(expectedValue, officialOverview.getState());
+    }
+ @Test public void shouldDisplayId(){
+        String expectedValue = "Id";
+
+        assertEquals(expectedValue, officialOverview.getId());
+    }
 
 }
