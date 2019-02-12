@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
 
+    public static final String DETAILS_INTENT_TAG = "id";
     private Context context;
 
     private ImageView     profileImage;
