@@ -1,3 +1,25 @@
+Bug fixes:
+
+In OfficialOverview class edited buildDisplayName method by
+removing .toLowerCase and adding nameBuilder.append(" ").
+
+Corrected error messages for the tools:context attribute in the
+activity xmls.
+
+
+Performance updates:
+
+Lightened colors.xml value grey800 for legibility.
+
+In DetailsActivity used CongressDao.getImage.getId() instead
+of profile.getImage for reliability and speed.
+
+Removed unused values from CongresspersonDetails,
+CongresspersonOverview, Role, and Subcommittee classes.
+
+
+
+
 # Android_Sprint8Challenge_CongressDebug
 
 ## Instructions
