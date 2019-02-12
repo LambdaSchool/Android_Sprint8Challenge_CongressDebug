@@ -1,4 +1,5 @@
 Bug fixes:
+
 In OfficialOverview class edited buildDisplayName method by
 removing .toLowerCase and adding nameBuilder.append(" ").
 
@@ -7,6 +8,7 @@ activity xmls.
 
 
 Performance updates:
+
 Lightened colors.xml value grey800 for legibility.
 
 In DetailsActivity used CongressDao.getImage.getId() instead
