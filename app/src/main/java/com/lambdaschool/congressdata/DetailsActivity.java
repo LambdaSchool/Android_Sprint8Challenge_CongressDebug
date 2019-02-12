@@ -16,10 +16,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.lambdaschool.congressdataapiaccess.CongressDao;
+import com.lambdaschool.congressdataapiaccess.CongresspersonOverview;
 
 public class DetailsActivity extends AppCompatActivity {
-
     private Context context;
+    public static final String DETAILS_TEST_TAG = "id";
 
     private ImageView     profileImage;
     private TextView      profileName;
@@ -49,7 +50,7 @@ public class DetailsActivity extends AppCompatActivity {
         context = this;
 
         Intent intent = getIntent();
-        memberId = intent.getStringExtra("id");
+        memberId = intent.getStringExtra(DETAILS_TEST_TAG);
 
         viewModel = ViewModelProviders.of(this).get(CongresspersonProfileViewModel.class);
 

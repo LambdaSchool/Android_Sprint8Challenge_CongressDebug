@@ -3,10 +3,11 @@ package com.lambdaschool.congressdataapiaccess;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CongresspersonDetails {
+public class CongresspersonDetails implements Serializable {
 
     private String memberId;
     private String firstName;
