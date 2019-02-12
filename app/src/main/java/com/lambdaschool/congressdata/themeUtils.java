@@ -1,4 +1,4 @@
-package com.lambdaschool.congressdata;
+cd androipackage com.lambdaschool.congressdata;
 
 import android.app.Activity;
 import android.content.Context;
