@@ -31,11 +31,12 @@ public class OfficialOverview {
     private String buildDisplayName() {
         StringBuilder nameBuilder = new StringBuilder();
         nameBuilder.append(firstName);
+        nameBuilder.append(" ");
         if (!middleName.equals("null")) {
             nameBuilder.append(middleName).append(" ");
         }
         nameBuilder.append(lastName);
-        return nameBuilder.toString().toLowerCase();
+        return nameBuilder.toString();
     }
 
     public String getDisplayName() {
