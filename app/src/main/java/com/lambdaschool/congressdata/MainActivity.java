@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private Context                     context;
     private CongresspersonListViewModel viewModel;
     private Activity                    activity;
+    private int themeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         }));
     }
 
-    private int themeId;
+
 
     @Override
     public void setTheme(int themeId) {
