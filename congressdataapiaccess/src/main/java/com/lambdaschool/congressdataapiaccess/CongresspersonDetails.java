@@ -104,14 +104,10 @@ public class CongresspersonDetails {
         this.icpsrId = "icpsr_id";
         this.twitterAccount = "twitter_account";
         this.facebookAccount = "facebook_account";
-        this.youtubeAccount = "youtube_account";
         this.crpId = "crp_id";
-        this.googleEntityId = "google_entity_id";
         this.rssUrl = "rss_url";
         this.inOffice = false;
         this.currentParty = "current_party";
-        this.mostRecentVote = "most_recent_vote";
-        this.lastUpdated = "last_updated";
         this.roles = new ArrayList<Role>();
     }
 
