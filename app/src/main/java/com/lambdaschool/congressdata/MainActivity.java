@@ -38,6 +38,7 @@ import android.widget.TextView;
         });
     }
 }*/
+//file is broken still trying to fix it 12:40pm 2/12/19
 
 
 public class MainActivity extends AppCompatActivity {
