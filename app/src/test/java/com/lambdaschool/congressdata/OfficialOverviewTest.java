@@ -27,15 +27,15 @@ public class OfficialOverviewTest {
     @Test
     public void getDisplayName() {
 
-        String name = "firstName";
+        String displayName = "firstName";
 
-        assertEquals(name, officialOverview.getDisplayName());
+        assertEquals(DISPLAY_NAME, officialOverview.getDisplayName());
     }
     @Test
     public void buildDisplayName(){
         String fullName = officialOverview.buildDisplayName();
 
-        assertEquals("firstName middleName lastName", fullName);
+        assertEquals("FIRST_NAME MIDDLE_NAME LAST_NAME", officialOverview.buildDisplayName());
     }
     @Test
     public void getId(){
