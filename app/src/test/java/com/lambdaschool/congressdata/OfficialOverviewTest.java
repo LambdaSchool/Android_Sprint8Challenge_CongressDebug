@@ -38,24 +38,24 @@ public class OfficialOverviewTest {
         assertEquals("firstName middleName lastName", fullName);
     }
     @Test
-    public void shouldGetId(){
+    public void getId(){
         String id = "id";
 
-        assertEquals(ID,  officialOverview id);
+        assertEquals(ID,  officialOverview.getId());
     }
 
     @Test
-    public void GetParty(){
+    public void getParty(){
         String party = "party";
 
-        assertEquals(PARTY, party);
+        assertEquals(PARTY, officialOverview.getParty());
     }
 
     @Test
-    public void shouldGetState(){
+    public void getState(){
         String state = "state";
 
-        assertEquals(STATE, state);
+        assertEquals(STATE, officialOverview.getState());
     }
 
 
