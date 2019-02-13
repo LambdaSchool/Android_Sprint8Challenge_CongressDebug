@@ -116,6 +116,8 @@ public class CongresspersonProfile {
             nameBuilder.append(middleName).append(" ");
         }
         nameBuilder.append(lastName);
+
+
         return nameBuilder.toString();
     }
 

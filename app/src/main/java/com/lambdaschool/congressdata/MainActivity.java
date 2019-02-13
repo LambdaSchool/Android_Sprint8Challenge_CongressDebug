@@ -38,6 +38,8 @@ import android.widget.TextView;
         });
     }
 }*/
+//file is broken still trying to fix it 12:40pm 2/12/19
+//file is working now starting the challenges 1:19pm 2/12/19
 
 
 public class MainActivity extends AppCompatActivity {
@@ -135,5 +137,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return dataView;
+        //testing
     }
 }
