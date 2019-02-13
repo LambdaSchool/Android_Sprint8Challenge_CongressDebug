@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.lambdaschool.congressdataapiaccess.CongresspersonOverview;
+
 public class DetailsActivity extends AppCompatActivity {
 
     public static final String DETAILS_INTENT_TAG = "id";
@@ -63,6 +65,7 @@ public class DetailsActivity extends AppCompatActivity {
         profileVotingBar        = findViewById(R.id.profile_voting_bar);
         profileCommitteeList    = findViewById(R.id.profile_committee_list);
         profileSubcommitteeList = findViewById(R.id.profile_subcommittee_list);
+
 
 
         ((TextView)findViewById(R.id.profile_name)).setOnClickListener(new View.OnClickListener() {

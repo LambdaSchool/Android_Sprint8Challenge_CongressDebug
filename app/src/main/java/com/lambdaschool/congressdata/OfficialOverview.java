@@ -30,12 +30,12 @@ public class OfficialOverview {
 
     public String buildDisplayName() {
         StringBuilder nameBuilder = new StringBuilder();
-        nameBuilder.append(firstName);
+        nameBuilder.append(firstName).append(" ");
         if (!middleName.equals("null")) {
             nameBuilder.append(middleName).append(" ");
         }
         nameBuilder.append(lastName);
-        return nameBuilder.toString().toLowerCase();
+        return nameBuilder.toString();//this was making it lowercase
     }
 
     public String getDisplayName() {

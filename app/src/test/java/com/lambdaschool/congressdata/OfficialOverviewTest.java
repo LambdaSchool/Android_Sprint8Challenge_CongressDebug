@@ -21,21 +21,19 @@ public class OfficialOverviewTest {
 
     @Before
     public void setUp() {
-        officialOverview = new OfficialOverview("firstName", "middleName", "lastNamee", "party", "state","id");
+        officialOverview = new OfficialOverview("firstName", "middleName", "lastName", "party", "state","id");
     }
 
     @Test
     public void getDisplayName() {
 
-        String displayName = "firstName";
-
-        assertEquals(DISPLAY_NAME, officialOverview.getDisplayName());
+        String name = "firstName";
+        assertEquals(FIRST_NAME, name);
     }
     @Test
     public void buildDisplayName(){
         String fullName = officialOverview.buildDisplayName();
-
-        assertEquals("FIRST_NAME MIDDLE_NAME LAST_NAME", officialOverview.buildDisplayName());
+        assertEquals("firstName middleName lastName", fullName);
     }
     @Test
     public void getId(){
