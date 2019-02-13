@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class OfficialOverviewTest {
 
 
-    private OfficialOverview officialOverviewTest = new OfficialOverview("Charles", "Dale", "Godoy", "D", "NJ", "117");
+    private OfficialOverview officialOverviewTest = new OfficialOverview("Charles", "Dale", "Godoy", "D", "NJ", "08902");
 
 
     @Test
@@ -55,13 +55,27 @@ public class OfficialOverviewTest {
     @Test
     public void doesDisplayIdWork() {
         // setup
-        String id = "117";
+        String id = "08902";
 
         // execution
 
 
         // check
         assertEquals(id, officialOverviewTest.getId());
+
+    }
+
+
+    @Test
+    public void doesBuildDisplayNameWork() {
+        // setup
+        String buildName = "Charles Dale Godoy";
+
+        // execution
+
+
+        // check
+        assertEquals(buildName, officialOverviewTest.buildDisplayName());
 
     }
 
