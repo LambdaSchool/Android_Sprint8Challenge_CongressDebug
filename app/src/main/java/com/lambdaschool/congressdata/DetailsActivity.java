@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.lambdaschool.congressdataapiaccess.CongressDao;
+
 public class DetailsActivity extends AppCompatActivity {
 
     private Context context;
@@ -79,7 +81,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         viewModel.getProfile().observe(this, profile -> runOnUiThread(() -> {
             assert profile != null;
-            profileImage.setImageBitmap(profile.getImage());
+            profileImage.setImageBitmap(CongressDao.getImage(profile.getId()));
             profileName.setText(profile.getDisplayName());
             profileParty.setText(profile.getParty());
             profileDistrict.setText(profile.getLocation());

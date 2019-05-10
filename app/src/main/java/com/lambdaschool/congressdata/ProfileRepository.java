@@ -15,7 +15,7 @@ public class ProfileRepository {
             @Override
             public void run() {
                 CongresspersonProfile profile = new CongresspersonProfile(CongressDao.getMemberDetails(id));
-                profile.setImage(CongressDao.getImage(profile.getId()));
+        //        profile.setImage(CongressDao.getImage(profile.getId()));
                 profileLiveData.postValue(profile);
             }
         }).start();
