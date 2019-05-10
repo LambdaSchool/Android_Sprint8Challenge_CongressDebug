@@ -134,7 +134,6 @@ public class DetailsActivity extends AppCompatActivity {
 	protected void onStart() {
 		super.onStart();
 		
-		//Commented out for UITesting
 if(memberId != null) {
 	viewModel.init(memberId);
 	

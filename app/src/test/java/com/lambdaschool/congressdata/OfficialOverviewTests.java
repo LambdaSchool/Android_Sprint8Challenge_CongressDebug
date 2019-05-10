@@ -2,22 +2,19 @@ package com.lambdaschool.congressdata;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
 
-@RunWith(RobolectricTestRunner.class)
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
+
 public class OfficialOverviewTests {
-	
-	private DetailsActivity detailsActivity = null;
-	
+	OfficialOverview officialOverview;
 	@Before
 	public void setup(){
-		detailsActivity = Robolectric.setupActivity(DetailsActivity.class);
+		 officialOverview= new OfficialOverview( "Peter",  "P.",  "Parker",  "D",  "NewYork",  "A0000055");
 	}
 	
 	@Test
-	public void detailsActivity_CorrectCongressPerson_ResultTrue(){
-	
+	public void OfficialOverview_BuildName_ResultTrue(){
+		assertThat(officialOverview.getDisplayName(),equalTo("Peter P. Parker"));
 	}
 }

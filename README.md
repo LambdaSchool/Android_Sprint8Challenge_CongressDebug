@@ -42,9 +42,11 @@ After you finish with these requirements, spend the rest of the time improving c
 ## Bugs
 
 ### UI
-
+Didn't notice Any Blantently noticable UI issues, Everything seems to load properly, all links work.
 
 ### Backend
+Fixed bug in OfficialOverview Line 33 and 38,  added space after first name, and removed the .toLowerCase on string builder.
 
 
 ### Performance Changes
+Removed RunOnUI Thread from Load Live Data in mainActivity -  Reduced Initial Load time from 60Seconds to 45Seconds (with profiler running).
