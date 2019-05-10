@@ -46,9 +46,6 @@ public class DetailsActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_details_view);
 		context = this;
 		
-		
-		
-		
 		viewModel = ViewModelProviders.of(this).get(CongresspersonProfileViewModel.class);
 		
 		profileImage = findViewById(R.id.profile_image);

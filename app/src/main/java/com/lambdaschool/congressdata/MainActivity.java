@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -73,8 +74,9 @@ public class MainActivity extends AppCompatActivity {
 			// using recycler view
 			listAdapter = new OverviewListAdapter(overviewList);
 			layoutList.setAdapter(listAdapter);
+			listAdapter.notifyDataSetChanged();
 		});}
-		
+	
 		private int themeId;
 	
 	@Override
