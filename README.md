@@ -1,3 +1,4 @@
+Spencer Stock
 # Android_Sprint8Challenge_CongressDebug
 
 ## Instructions
