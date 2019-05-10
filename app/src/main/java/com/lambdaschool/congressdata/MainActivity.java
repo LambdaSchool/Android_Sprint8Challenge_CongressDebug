@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Trace;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         activity = this;
         //themeUtils.onActivityCreateSetTheme(activity);
         super.onCreate(savedInstanceState);
@@ -69,9 +71,15 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getOverviewList().observe(this, overviewList -> runOnUiThread(() -> {
             assert overviewList != null;
 
-            // using recycler view
-            listAdapter = new OverviewListAdapter(overviewList);
-            layoutList.setAdapter(listAdapter);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    // using recycler view
+                    listAdapter = new OverviewListAdapter(overviewList);
+                    layoutList.setAdapter(listAdapter);
+                }
+            }).start();
+
 
             // using scroll view
             /*for (OfficialOverview officialOverview : overviewList) {
@@ -79,8 +87,9 @@ public class MainActivity extends AppCompatActivity {
                                                       officialOverview.getId()));
             }*/
         }));
-    }
 
+    }
+/*
     private int themeId;
 
     @Override
@@ -91,9 +100,10 @@ public class MainActivity extends AppCompatActivity {
 
     public int getThemeId() {
         return themeId;
-    }
+    }*/
 
 
+/*
     @Override
     protected void onStart() {
         if (getThemeId() != themeUtils.getcTheme(activity)) {
@@ -109,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onResume();
     }
+*/
 
     /**
      * This method generates default TextView objects for the congressperson list in this activity.
@@ -117,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
      * @param id   api id for the congressperson
      * @return TextView object with the text and tag set as provided
      */
-    @NonNull
+/*    @NonNull
     private TextView getDefaultTextView(String text, String id) {
         TextView dataView = new TextView(context);
         dataView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
@@ -135,5 +146,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return dataView;
-    }
+    }*/
 }

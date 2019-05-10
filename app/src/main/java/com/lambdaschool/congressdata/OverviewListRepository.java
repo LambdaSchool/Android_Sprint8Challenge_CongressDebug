@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class OverviewListRepository {
     public static LiveData<ArrayList<OfficialOverview>> getOverviewList() {
-        Log.i("Repository", "Retreiving Data");
+        Log.i("Repository", "Retrieving Data");
         final MutableLiveData<ArrayList<OfficialOverview>> listLiveData = new MutableLiveData<>();
 
         ArrayList<OfficialOverview>       overviews  = new ArrayList<>();
