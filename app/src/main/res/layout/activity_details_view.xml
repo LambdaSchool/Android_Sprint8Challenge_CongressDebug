@@ -23,7 +23,8 @@
                 android:adjustViewBounds="true"
                 android:outlineProvider="bounds"
                 android:scaleType="centerInside"
-                android:contentDescription="Congress Person" />
+                android:contentDescription="Congress Person"
+                />
 
         </LinearLayout>
 
