@@ -37,3 +37,12 @@ The requirements for this project are as follows:
 ## Go Further
 
 After you finish with these requirements, spend the rest of the time improving coverage on your unit tests, improving the UI tests and improving overall performance.
+
+## List of Bugs Fixed
+
+1. Modified build display name method in OfficialOverview class to remove toLowerString() method and add appropriate spaces between names
+2. Removed all hardcoded strings and image from details xml layout to make transition more seamless
+3. Modified getOverviewList() and getProfile() methods in OverviewListRepository and ProfileRepository to move CongressDao access methods to background thread and used postValue instead of setValue
+4. Modified getProfile() method in ProfileRepository to remove image access method and moved the method to DetailsActivity
+5. Removed all unused code
+6. Removed util method from onCreate of MainActivity and DetailsActivity to improve startup time performance
