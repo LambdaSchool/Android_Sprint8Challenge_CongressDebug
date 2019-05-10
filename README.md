@@ -51,4 +51,6 @@ Fixed bug in OfficialOverview Line 33 and 38,  added space after first name, and
 ### Performance Changes
 Removed RunOnUI Thread from Load Live Data in mainActivity -  Reduced Initial Load time from 60Seconds to 45Seconds (with profiler running).
 
+Removed RunOnUI Thread From OnStart in Details Activity - Reduced Load time by about 15%. 
+
 Removed Initalization of unused variables in CongressPersonOverview class, reduced loading time from 45 seconds to 15 seconds (with profiler running).
