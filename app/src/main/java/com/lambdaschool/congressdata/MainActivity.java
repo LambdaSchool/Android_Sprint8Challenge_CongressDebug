@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         activity = this;
+        themeUtils.getcTheme(activity);
         themeUtils.onActivityCreateSetTheme(activity);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -81,32 +82,13 @@ public class MainActivity extends AppCompatActivity {
         }));
     }
 
-    private int themeId;
 
-    @Override
-    public void setTheme(int themeId) {
-        super.setTheme(themeId);
-        this.themeId = themeId;
-    }
-
-    public int getThemeId() {
-        return themeId;
-    }
-
-
-    @Override
-    protected void onStart() {
-        if (getThemeId() != themeUtils.getcTheme(activity)) {
-            themeUtils.refreshActivity(activity);
-        }
-        super.onStart();
-    }
 
     @Override
     protected void onResume() {
-        if (getThemeId() != themeUtils.getcTheme(activity)) {
+/*        if (getThemeId() != themeUtils.getcTheme(activity)) {
             themeUtils.refreshActivity(activity);
-        }
+        }*/
         super.onResume();
     }
 
@@ -117,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
      * @param id   api id for the congressperson
      * @return TextView object with the text and tag set as provided
      */
-    @NonNull
+/*    @NonNull
     private TextView getDefaultTextView(String text, String id) {
         TextView dataView = new TextView(context);
         dataView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
@@ -135,5 +117,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return dataView;
-    }
+    }*/
 }
