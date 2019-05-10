@@ -41,4 +41,6 @@ After you finish with these requirements, spend the rest of the time improving c
 ---
 ## Bugfixes
 
-Fixed nameBuilder lowercasing the display name at OfficialOverview.buildDisplayName. Added space after firstName.
+-Fixed nameBuilder lowercasing the display name at OfficialOverview.buildDisplayName. Added space after firstName.
+
+-Moved all network calls to worker thread
