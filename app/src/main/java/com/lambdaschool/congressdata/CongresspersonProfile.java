@@ -10,10 +10,11 @@ import com.lambdaschool.congressdataapiaccess.Subcommittee;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CongresspersonProfile {
+public class CongresspersonProfile implements Serializable {
 
     public static final String INDEPENDENT             = "Independent";
     public static final String REPUBLICAN              = "Republican";
