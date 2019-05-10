@@ -51,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        if(themeId != themeUtils.getcTheme(activity)){
+        int savedTheme = themeUtils.getcTheme(activity);
+        if(themeId != savedTheme){
+            themeId = savedTheme;
             themeUtils.refreshActivity(activity);
         }
         super.onStart();
