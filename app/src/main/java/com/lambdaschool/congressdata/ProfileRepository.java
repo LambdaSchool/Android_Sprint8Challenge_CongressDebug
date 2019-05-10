@@ -11,9 +11,15 @@ public class ProfileRepository {
         Log.i("Repository", "Retreiving Data");
         final MutableLiveData<CongresspersonProfile> profileLiveData = new MutableLiveData<>();
 
-        CongresspersonProfile profile = new CongresspersonProfile(CongressDao.getMemberDetails(id));
-        profile.setImage(CongressDao.getImage(profile.getId()));
-        profileLiveData.setValue(profile);
+        new Thread(() -> {
+            CongresspersonProfile profile = new CongresspersonProfile(CongressDao.getMemberDetails(id));
+            profile.setImage(CongressDao.getImage(profile.getId()));
+            profileLiveData.postValue(profile);
+        });
+
+//        CongresspersonProfile profile = new CongresspersonProfile(CongressDao.getMemberDetails(id));
+//        profile.setImage(CongressDao.getImage(profile.getId()));
+//        profileLiveData.setValue(profile);
 
         return profileLiveData;
     }
