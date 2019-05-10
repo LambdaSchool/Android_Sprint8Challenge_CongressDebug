@@ -37,3 +37,14 @@ The requirements for this project are as follows:
 ## Go Further
 
 After you finish with these requirements, spend the rest of the time improving coverage on your unit tests, improving the UI tests and improving overall performance.
+
+
+## Bugs
+
+### UI
+
+
+### Backend
+
+
+### Performance Changes

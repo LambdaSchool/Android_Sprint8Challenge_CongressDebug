@@ -46,8 +46,9 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details_view);
         context = this;
 
-        Intent intent = getIntent();
-        memberId = intent.getStringExtra("id");
+ 
+        
+       // memberId = intent.getStringExtra("id");
 
         viewModel = ViewModelProviders.of(this).get(CongresspersonProfileViewModel.class);
 
@@ -62,8 +63,11 @@ public class DetailsActivity extends AppCompatActivity {
         profileVotingBar        = findViewById(R.id.profile_voting_bar);
         profileCommitteeList    = findViewById(R.id.profile_committee_list);
         profileSubcommitteeList = findViewById(R.id.profile_subcommittee_list);
-
-
+    
+        Intent intent = getIntent();
+        CongresspersonProfile profile = (CongresspersonProfile)intent.getSerializableExtra("object");
+        buildFromObject(profile);
+        
         ((TextView)findViewById(R.id.profile_name)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,12 +75,62 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
     }
+    // For UI Testing
+    public void buildFromObject(CongresspersonProfile profile){
+        profileImage.setImageBitmap(profile.getImage());
+        profileName.setText(profile.getDisplayName());
+        profileParty.setText(profile.getParty());
+        profileDistrict.setText(profile.getLocation());
+        profileTwitter.setText(Html.fromHtml("<a href=\"https://twitter.com/" + profile.getTwitterAccount() + "\">Twitter</a>"));
+        profileFacebook.setText(Html.fromHtml("<a href=\"https://www.facebook.com/" + profile.getFacebookAccount() + "/\">Facebook</a>"));
+        profileMap.setText(Html.fromHtml("<a href=\"https://www.google.com/maps/search/" + profile.getOffice().replace(" ", "-") + "\">Office</a>"));
+        profilePhone.setText(profile.getPhone());
+    
+    
+        profileVotingBar.setProgress((int) profile.getPrimaryProgress());
+        profileVotingBar.setSecondaryProgress((int) profile.getSecondaryProgress());
+    
+       /* for(String name: profile.getCommittees()) {
+            profileCommitteeList.addView(getDefaultTextView(name));
+        }
+    
+        for(String name: profile.getSubcommittees()) {
+            profileSubcommitteeList.addView(getDefaultTextView(name));
+        }*/
+    
+        profileTwitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!profile.getTwitterAccount().equals("null")) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + profile.getTwitterAccount())));
+                }
+            }
+        });
+        profileFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!profile.getFacebookAccount().equals("null")) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + profile.getFacebookAccount())));
+                }
+            }
+        });
+        profileMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!profile.getOffice().equals("null")) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/" + profile.getOffice())));
+                }
+            }
+        });
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
+        
+        //Commented out for UITesting
 
-        viewModel.init(memberId);
+       /* viewModel.init(memberId);
 
         viewModel.getProfile().observe(this, profile -> runOnUiThread(() -> {
             assert profile != null;
@@ -125,7 +179,7 @@ public class DetailsActivity extends AppCompatActivity {
                     }
                 }
             });
-        }));
+        }));*/
     }
 
     /*@Override

@@ -21,7 +21,6 @@ public class OverviewListAdapter extends RecyclerView.Adapter<OverviewListAdapte
 
         public ViewHolder(View view) {
             super(view);
-
             textListName = view.findViewById(R.id.text_list_name);
             textListParty = view.findViewById(R.id.text_list_party);
             textListState = view.findViewById(R.id.text_list_state);
