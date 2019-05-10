@@ -58,9 +58,23 @@ public class DetailsActivityTest {
     };
 
     @Test
-    public void profileNameTextView_Success() {
+    public void profileNameTextView_ProfileNameIsDisplayName() {
         onView(withId(R.id.profile_name)).check(matches(withText("Ralph Abraham")));
+    }
 
+    @Test
+    public void profilePartyTextView_CorrectParty() {
+        onView(withId(R.id.profile_party)).check(matches(withText("Republican")));
+    }
+
+    @Test
+    public void profileDistrictTextView_DistrictIsStateAndDistrict() {
+        onView(withId(R.id.profile_district)).check(matches(withText("LA - District 5")));
+    }
+
+    @Test
+    public void profilePhoneTextView_Success() {
+        onView(withId(R.id.profile_phone)).check(matches(withText("202-225-8490")));
     }
 
 
