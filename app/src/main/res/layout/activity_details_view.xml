@@ -7,6 +7,12 @@
     tools:context=".profile.DetailsActivity"
     android:id="@+id/activity_details_root">
 
+    <ProgressBar
+        android:id="@+id/activity_details_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

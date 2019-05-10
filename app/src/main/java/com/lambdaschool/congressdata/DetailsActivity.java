@@ -38,6 +38,7 @@ public class DetailsActivity extends AppCompatActivity {
     private CongresspersonProfileViewModel viewModel;
 
     private View rootView;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +49,14 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details_view);
         context = this;
 
+        rootView = findViewById(R.id.activity_details_root);
+        rootView.setVisibility(View.INVISIBLE);
+        progressBar = findViewById(R.id.activity_details_progress_bar);
+        progressBar.setVisibility(View.VISIBLE);
+
         Intent intent = getIntent();
         memberId = intent.getStringExtra("id");
 
-        rootView = findViewById(R.id.activity_details_root);
-        rootView.setVisibility(View.INVISIBLE);
         viewModel = ViewModelProviders.of(this).get(CongresspersonProfileViewModel.class);
 
         profileImage            = findViewById(R.id.profile_image);
@@ -85,6 +89,7 @@ public class DetailsActivity extends AppCompatActivity {
         viewModel.getProfile().observe(this, profile -> runOnUiThread(() -> {
             assert profile != null;
             rootView.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
 
             profileImage.setImageBitmap(profile.getImage());
             profileName.setText(profile.getDisplayName());
