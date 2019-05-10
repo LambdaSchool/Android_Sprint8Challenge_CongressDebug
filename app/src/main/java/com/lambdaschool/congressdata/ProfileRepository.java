@@ -13,7 +13,6 @@ public class ProfileRepository {
         final MutableLiveData<CongresspersonProfile> profileLiveData = new MutableLiveData<>();
 
         CongresspersonProfile profile = new CongresspersonProfile(CongressDao.getMemberDetails(id));
-//        profile.setImage(CongressDao.getImage(profile.getId()));
         profileLiveData.setValue(profile);
 
         return profileLiveData;
