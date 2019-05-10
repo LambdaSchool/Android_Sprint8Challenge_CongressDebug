@@ -37,6 +37,8 @@ public class DetailsActivity extends AppCompatActivity {
 
     private CongresspersonProfileViewModel viewModel;
 
+    private View rootView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         activity = this;
@@ -49,6 +51,8 @@ public class DetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         memberId = intent.getStringExtra("id");
 
+        rootView = findViewById(R.id.activity_details_root);
+        rootView.setVisibility(View.INVISIBLE);
         viewModel = ViewModelProviders.of(this).get(CongresspersonProfileViewModel.class);
 
         profileImage            = findViewById(R.id.profile_image);
@@ -80,6 +84,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         viewModel.getProfile().observe(this, profile -> runOnUiThread(() -> {
             assert profile != null;
+            rootView.setVisibility(View.VISIBLE);
+
             profileImage.setImageBitmap(profile.getImage());
             profileName.setText(profile.getDisplayName());
             profileParty.setText(profile.getParty());

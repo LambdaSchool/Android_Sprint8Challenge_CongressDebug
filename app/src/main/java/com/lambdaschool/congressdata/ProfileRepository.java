@@ -15,7 +15,7 @@ public class ProfileRepository {
             CongresspersonProfile profile = new CongresspersonProfile(CongressDao.getMemberDetails(id));
             profile.setImage(CongressDao.getImage(profile.getId()));
             profileLiveData.postValue(profile);
-        });
+        }).start();
 
 //        CongresspersonProfile profile = new CongresspersonProfile(CongressDao.getMemberDetails(id));
 //        profile.setImage(CongressDao.getImage(profile.getId()));
