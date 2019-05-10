@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
@@ -63,7 +64,7 @@ public class DetailsActivity extends AppCompatActivity {
 		Intent intent = getIntent();
 		memberId = intent.getStringExtra("id");
 		CongresspersonProfile profile = (CongresspersonProfile) intent.getSerializableExtra("object");
-		if(profile != null) {
+		if (profile != null) {
 			buildFromObject(profile);
 		}
 		
@@ -131,58 +132,61 @@ public class DetailsActivity extends AppCompatActivity {
 	protected void onStart() {
 		super.onStart();
 		
-if(memberId != null) {
-	viewModel.init(memberId);
-	
-	viewModel.getProfile().observe(this, profile -> runOnUiThread(() -> {
-		assert profile != null;
-		profileImage.setImageBitmap(profile.getImage());
-		profileName.setText(profile.getDisplayName());
-		profileParty.setText(profile.getParty());
-		profileDistrict.setText(profile.getLocation());
-		profileTwitter.setText(Html.fromHtml("<a href=\"https://twitter.com/" + profile.getTwitterAccount() + "\">Twitter</a>"));
-		profileFacebook.setText(Html.fromHtml("<a href=\"https://www.facebook.com/" + profile.getFacebookAccount() + "/\">Facebook</a>"));
-		profileMap.setText(Html.fromHtml("<a href=\"https://www.google.com/maps/search/" + profile.getOffice().replace(" ", "-") + "\">Office</a>"));
-		profilePhone.setText(profile.getPhone());
-		
-		
-		profileVotingBar.setProgress((int) profile.getPrimaryProgress());
-		profileVotingBar.setSecondaryProgress((int) profile.getSecondaryProgress());
-		
-		for (String name : profile.getCommittees()) {
-			profileCommitteeList.addView(getDefaultTextView(name));
+		if (memberId != null) {
+			viewModel.init(memberId);
+			long StartTime = System.currentTimeMillis();
+			viewModel.getProfile().observe(this, profile -> {
+				assert profile != null;
+				profileImage.setImageBitmap(profile.getImage());
+				profileName.setText(profile.getDisplayName());
+				profileParty.setText(profile.getParty());
+				profileDistrict.setText(profile.getLocation());
+				profileTwitter.setText(Html.fromHtml("<a href=\"https://twitter.com/" + profile.getTwitterAccount() + "\">Twitter</a>"));
+				profileFacebook.setText(Html.fromHtml("<a href=\"https://www.facebook.com/" + profile.getFacebookAccount() + "/\">Facebook</a>"));
+				profileMap.setText(Html.fromHtml("<a href=\"https://www.google.com/maps/search/" + profile.getOffice().replace(" ", "-") + "\">Office</a>"));
+				profilePhone.setText(profile.getPhone());
+				
+				
+				profileVotingBar.setProgress((int) profile.getPrimaryProgress());
+				profileVotingBar.setSecondaryProgress((int) profile.getSecondaryProgress());
+				
+				for (String name : profile.getCommittees()) {
+					profileCommitteeList.addView(getDefaultTextView(name));
+				}
+				
+				for (String name : profile.getSubcommittees()) {
+					profileSubcommitteeList.addView(getDefaultTextView(name));
+				}
+				
+				profileTwitter.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						if (!profile.getTwitterAccount().equals("null")) {
+							startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + profile.getTwitterAccount())));
+						}
+					}
+				});
+				profileFacebook.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						if (!profile.getFacebookAccount().equals("null")) {
+							startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + profile.getFacebookAccount())));
+						}
+					}
+				});
+				profileMap.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						if (!profile.getOffice().equals("null")) {
+							startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/" + profile.getOffice())));
+						}
+					}
+				});
+			});
+			Log.i("Test", String.valueOf(System.currentTimeMillis() - StartTime));
+			
+			
 		}
-		
-		for (String name : profile.getSubcommittees()) {
-			profileSubcommitteeList.addView(getDefaultTextView(name));
-		}
-		
-		profileTwitter.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				if (!profile.getTwitterAccount().equals("null")) {
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + profile.getTwitterAccount())));
-				}
-			}
-		});
-		profileFacebook.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				if (!profile.getFacebookAccount().equals("null")) {
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + profile.getFacebookAccount())));
-				}
-			}
-		});
-		profileMap.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				if (!profile.getOffice().equals("null")) {
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/" + profile.getOffice())));
-				}
-			}
-		});
-	}));
-}
 	}
 
     /*@Override
