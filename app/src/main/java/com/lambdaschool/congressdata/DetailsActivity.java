@@ -80,7 +80,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         viewModel.getProfile().observe(this, profile -> runOnUiThread(() -> {
             assert profile != null;
-            profileImage.setImageBitmap(profile.getImage());
+//            profileImage.setImageBitmap(profile.getImage());
             profileName.setText(profile.getDisplayName());
             profileParty.setText(profile.getParty());
             profileDistrict.setText(profile.getLocation());
@@ -125,6 +125,10 @@ public class DetailsActivity extends AppCompatActivity {
                     }
                 }
             });
+        }));
+
+        viewModel.getProfileImage().observe(this,  profileImage -> runOnUiThread(() -> {
+            this.profileImage.setImageBitmap(profileImage);
         }));
     }
 
