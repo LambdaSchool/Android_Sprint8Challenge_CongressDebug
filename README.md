@@ -26,6 +26,9 @@ This screen recording shows how the app should look. Use this when designing you
 The goal of this application is threefold. You must debug this Congressperson Information project, write unit tests, as well as UI tests for the portions specified.
 > When debugging, be sure to note the bugs you fixed in your readme so that your PM can use that as a reference.
 
+-Bugfix - returning names in lowercase changed to allow uppercase
+-Bugfix - adding a space after the first name in the listview
+
 The requirements for this project are as follows:
 
 1. Write unit tests for the `OfficialOverview` class, be sure to use the screen recording above as a reference to the output.
