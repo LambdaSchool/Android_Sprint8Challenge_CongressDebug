@@ -14,14 +14,19 @@ public class OverviewListRepository {
         Log.i("Repository", "Retreiving Data");
         final MutableLiveData<ArrayList<OfficialOverview>> listLiveData = new MutableLiveData<>();
 
-        ArrayList<OfficialOverview>       overviews  = new ArrayList<>();
-        ArrayList<CongresspersonOverview> allMembers = CongressDao.getAllMembers();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ArrayList<OfficialOverview>       overviews  = new ArrayList<>();
+                ArrayList<CongresspersonOverview> allMembers = CongressDao.getAllMembers();
 
-        for (CongresspersonOverview member:allMembers) {
-            overviews.add(new OfficialOverview(member));
-        }
+                for (CongresspersonOverview member:allMembers) {
+                    overviews.add(new OfficialOverview(member));
+                }
 
-        listLiveData.setValue(overviews);
+                listLiveData.postValue(overviews);
+            }
+        }).start();
 
         return listLiveData;
     }
