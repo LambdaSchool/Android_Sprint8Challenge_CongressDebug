@@ -32,10 +32,12 @@ public class OfficialOverview {
         StringBuilder nameBuilder = new StringBuilder();
         nameBuilder.append(firstName);
         if (!middleName.equals("null")) {
-            nameBuilder.append(middleName).append(" ");
+            nameBuilder.append(" ").append(middleName).append(" ");
+        }else{
+            nameBuilder.append(" ");
         }
         nameBuilder.append(lastName);
-        return nameBuilder.toString().toLowerCase();
+        return nameBuilder.toString();
     }
 
     public String getDisplayName() {
