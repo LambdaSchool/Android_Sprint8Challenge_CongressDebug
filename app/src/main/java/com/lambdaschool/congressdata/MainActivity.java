@@ -1,12 +1,14 @@
 package com.lambdaschool.congressdata;
 
 import android.app.Activity;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,7 +16,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 
@@ -50,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     private CongresspersonListViewModel viewModel;
     private Activity                    activity;
 
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         activity = this;
@@ -63,11 +70,14 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(context);
         layoutList.setLayoutManager(layoutManager);
 
+        progressBar = findViewById(R.id.activity_main_progress_bar);
+        progressBar.setVisibility(View.VISIBLE);
 
         viewModel = ViewModelProviders.of(this).get(CongresspersonListViewModel.class);
 
         viewModel.getOverviewList().observe(this, overviewList -> runOnUiThread(() -> {
             assert overviewList != null;
+            progressBar.setVisibility(View.GONE);
 
             // using recycler view
             listAdapter = new OverviewListAdapter(overviewList);
