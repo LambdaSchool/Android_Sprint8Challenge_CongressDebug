@@ -19,21 +19,21 @@ public class DetailsActivity extends AppCompatActivity {
 
     private Context context;
 
-    private ImageView     profileImage;
-    private TextView      profileName;
-    private TextView      profileParty;
-    private TextView      profileDistrict;
-    private TextView      profileTwitter;
-    private TextView      profileFacebook;
-    private TextView      profileMap;
-    private TextView      profilePhone;
-    private ProgressBar   profileVotingBar;
-    private LinearLayout  profileCommitteeList;
-    private LinearLayout  profileSubcommitteeList;
+    private ImageView profileImage;
+    private TextView profileName;
+    private TextView profileParty;
+    private TextView profileDistrict;
+    private TextView profileTwitter;
+    private TextView profileFacebook;
+    private TextView profileMap;
+    private TextView profilePhone;
+    private ProgressBar profileVotingBar;
+    private LinearLayout profileCommitteeList;
+    private LinearLayout profileSubcommitteeList;
 
     private Activity activity;
 
-    private String                memberId;
+    private String memberId;
 
     private CongresspersonProfileViewModel viewModel;
 
@@ -51,82 +51,86 @@ public class DetailsActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(CongresspersonProfileViewModel.class);
 
-        profileImage            = findViewById(R.id.profile_image);
-        profileName             = findViewById(R.id.profile_name);
-        profileParty            = findViewById(R.id.profile_party);
-        profileDistrict         = findViewById(R.id.profile_district);
-        profileTwitter          = findViewById(R.id.profile_twitter);
-        profileFacebook         = findViewById(R.id.profile_facebook);
-        profileMap              = findViewById(R.id.profile_map);
-        profilePhone            = findViewById(R.id.profile_phone);
-        profileVotingBar        = findViewById(R.id.profile_voting_bar);
-        profileCommitteeList    = findViewById(R.id.profile_committee_list);
+        profileImage = findViewById(R.id.profile_image);
+        profileName = findViewById(R.id.profile_name);
+        profileParty = findViewById(R.id.profile_party);
+        profileDistrict = findViewById(R.id.profile_district);
+        profileTwitter = findViewById(R.id.profile_twitter);
+        profileFacebook = findViewById(R.id.profile_facebook);
+        profileMap = findViewById(R.id.profile_map);
+        profilePhone = findViewById(R.id.profile_phone);
+        profileVotingBar = findViewById(R.id.profile_voting_bar);
+        profileCommitteeList = findViewById(R.id.profile_committee_list);
         profileSubcommitteeList = findViewById(R.id.profile_subcommittee_list);
 
 
-        ((TextView)findViewById(R.id.profile_name)).setOnClickListener(new View.OnClickListener() {
+        ((TextView) findViewById(R.id.profile_name)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 themeUtils.nextTheme(activity);
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
 
         viewModel.init(memberId);
 
         viewModel.getProfile().observe(this, profile -> runOnUiThread(() -> {
             assert profile != null;
-            profileImage.setImageBitmap(profile.getImage());
-            profileName.setText(profile.getDisplayName());
-            profileParty.setText(profile.getParty());
-            profileDistrict.setText(profile.getLocation());
-            profileTwitter.setText(Html.fromHtml("<a href=\"https://twitter.com/" + profile.getTwitterAccount() + "\">Twitter</a>"));
-            profileFacebook.setText(Html.fromHtml("<a href=\"https://www.facebook.com/" + profile.getFacebookAccount() + "/\">Facebook</a>"));
-            profileMap.setText(Html.fromHtml("<a href=\"https://www.google.com/maps/search/" + profile.getOffice().replace(" ", "-") + "\">Office</a>"));
-            profilePhone.setText(profile.getPhone());
 
-
-            profileVotingBar.setProgress((int) profile.getPrimaryProgress());
-            profileVotingBar.setSecondaryProgress((int) profile.getSecondaryProgress());
-
-            for(String name: profile.getCommittees()) {
-                profileCommitteeList.addView(getDefaultTextView(name));
-            }
-
-            for(String name: profile.getSubcommittees()) {
-                profileSubcommitteeList.addView(getDefaultTextView(name));
-            }
-
-            profileTwitter.setOnClickListener(new View.OnClickListener() {
+            new Thread(new Runnable() {
                 @Override
-                public void onClick(View view) {
-                    if(!profile.getTwitterAccount().equals("null")) {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + profile.getTwitterAccount())));
+                public void run() {
+
+                    profileImage.setImageBitmap(profile.getImage());
+                    profileName.setText(profile.getDisplayName());
+                    profileParty.setText(profile.getParty());
+                    profileDistrict.setText(profile.getLocation());
+                    profileTwitter.setText(Html.fromHtml("<a href=\"https://twitter.com/" + profile.getTwitterAccount() + "\">Twitter</a>"));
+                    profileFacebook.setText(Html.fromHtml("<a href=\"https://www.facebook.com/" + profile.getFacebookAccount() + "/\">Facebook</a>"));
+                    profileMap.setText(Html.fromHtml("<a href=\"https://www.google.com/maps/search/" + profile.getOffice().replace(" ", "-") + "\">Office</a>"));
+                    profilePhone.setText(profile.getPhone());
+
+
+                    profileVotingBar.setProgress((int) profile.getPrimaryProgress());
+                    profileVotingBar.setSecondaryProgress((int) profile.getSecondaryProgress());
+
+                    for (String name : profile.getCommittees()) {
+                        profileCommitteeList.addView(getDefaultTextView(name));
                     }
-                }
-            });
-            profileFacebook.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(!profile.getFacebookAccount().equals("null")) {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + profile.getFacebookAccount())));
+
+                    for (String name : profile.getSubcommittees()) {
+                        profileSubcommitteeList.addView(getDefaultTextView(name));
                     }
+
+                    profileTwitter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (!profile.getTwitterAccount().equals("null")) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + profile.getTwitterAccount())));
+                            }
+                        }
+                    });
+                    profileFacebook.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (!profile.getFacebookAccount().equals("null")) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + profile.getFacebookAccount())));
+                            }
+                        }
+                    });
+                    profileMap.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (!profile.getOffice().equals("null")) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/" + profile.getOffice())));
+                            }
+                        }
+                    });
                 }
-            });
-            profileMap.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(!profile.getOffice().equals("null")) {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/" + profile.getOffice())));
-                    }
-                }
-            });
+            }).start();
+
         }));
     }
+
 
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {
