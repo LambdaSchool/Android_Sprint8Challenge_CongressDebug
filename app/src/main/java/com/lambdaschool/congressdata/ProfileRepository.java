@@ -8,7 +8,7 @@ import com.lambdaschool.congressdataapiaccess.CongressDao;
 
 public class ProfileRepository {
     public static LiveData<CongresspersonProfile> getProfile(final String id) {
-        Log.i("Repository", "Retreiving Data");
+        //Log.i("Repository", "Retreiving Data");
         final MutableLiveData<CongresspersonProfile> profileLiveData = new MutableLiveData<>();
 
         CongresspersonProfile profile = new CongresspersonProfile(CongressDao.getMemberDetails(id));
