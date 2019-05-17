@@ -18,3 +18,7 @@ themeUtils
  58      if (cTheme == 1) { //Shoon fixed theme to white
 
 
+
+Role
+      //  this.subcommittees = Subcommittee.getSubCommitteesFromJSON(CongressDao.getJSONArrayFromJson(jsonObject, "subcommittees"));
+
