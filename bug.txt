@@ -1,12 +1,15 @@
-
+Text name format
 Officailoverview    
+31       nameBuilder.append(firstName+" "); //Shoon fixed spaced added
+35        nameBuilder.append(middleName+" ").append(" "); //Shoon fixed sace added
+38        return nameBuilder.toString(); //Shoon fixed
 
-private String buildDisplayName() {
-        StringBuilder nameBuilder = new StringBuilder();
-        nameBuilder.append(firstName+" "); //Shoon fixed spaced added
-        if (!middleName.equals("null")) {
-            nameBuilder.append(middleName+" ").append(" "); //Shoon fixed sace added
-        }
-        nameBuilder.append(lastName);
-        return nameBuilder.toString(); //Shoon fixed
-    }
+
+CongressDao
+15     public static final  String CONGRESS_NUMBER               = "116"; //Shoon fixed from 115 to 116
+
+
+
+DetailActivity
+97    //            profileCommitteeList.addView(getDefaultTextView(name)); //Shoon fixed hide committees
+101     //           profileSubcommitteeList.addView(getDefaultTextView(name));//Shoon fixed hide sub committees

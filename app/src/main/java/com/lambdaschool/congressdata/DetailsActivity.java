@@ -94,11 +94,11 @@ public class DetailsActivity extends AppCompatActivity {
             profileVotingBar.setSecondaryProgress((int) profile.getSecondaryProgress());
 
             for(String name: profile.getCommittees()) {
-                profileCommitteeList.addView(getDefaultTextView(name));
+    //            profileCommitteeList.addView(getDefaultTextView(name)); //Shoon fixed hide committees
             }
 
             for(String name: profile.getSubcommittees()) {
-                profileSubcommitteeList.addView(getDefaultTextView(name));
+     //           profileSubcommitteeList.addView(getDefaultTextView(name));//Shoon fixed hide sub committees
             }
 
             profileTwitter.setOnClickListener(new View.OnClickListener() {
