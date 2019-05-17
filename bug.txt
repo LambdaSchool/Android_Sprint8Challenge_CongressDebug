@@ -13,3 +13,8 @@ CongressDao
 DetailActivity
 97    //            profileCommitteeList.addView(getDefaultTextView(name)); //Shoon fixed hide committees
 101     //           profileSubcommitteeList.addView(getDefaultTextView(name));//Shoon fixed hide sub committees
+
+themeUtils
+ 58      if (cTheme == 1) { //Shoon fixed theme to white
+
+

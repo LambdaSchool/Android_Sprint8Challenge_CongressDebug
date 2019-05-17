@@ -14,7 +14,7 @@ public class themeUtils {
     public static void nextTheme(Activity activity) {
         prefs = activity.getSharedPreferences("prefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-
+        cTheme = R.style.AppTheme;
         switch (counter) {
             case 0:
                 cTheme = R.style.AppTheme_Lambda_Dark;
@@ -55,7 +55,7 @@ public class themeUtils {
     }
 
     public static int getcTheme(Activity activity) {
-        if (cTheme == 0) {
+        if (cTheme == 1) { //Shoon fixed theme to white
             prefs = activity.getSharedPreferences("prefs", Context.MODE_PRIVATE);
             cTheme = prefs.getInt("Theme",R.style.AppTheme);
         }
