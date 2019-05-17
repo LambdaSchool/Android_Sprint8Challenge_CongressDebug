@@ -1,24 +1,23 @@
 package com.lambdaschool.congressdata;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class OfficialOverviewTest {
 
-    @Test
-    public void getDisplayName() {
+
+    @Before
+    public void initialize(){
+
     }
 
     @Test
-    public void getId() {
+    public void testgetDisplayName() {
+        OfficialOverview officialOverview= new OfficialOverview("FirstName", "MiddleName", "LastName", "Party", "State", "id");
+        assertEquals( "FirstName MiddleName LastName",officialOverview.getDisplayName());
     }
 
-    @Test
-    public void getParty() {
-    }
 
-    @Test
-    public void getState() {
-    }
 }

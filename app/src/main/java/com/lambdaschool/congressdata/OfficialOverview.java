@@ -32,14 +32,14 @@ public class OfficialOverview {
         StringBuilder nameBuilder = new StringBuilder();
         nameBuilder.append(firstName+" "); //Shoon fixed spaced added
         if (!middleName.equals("null")) {
-            nameBuilder.append(middleName+" ").append(" "); //Shoon fixed sace added
+            nameBuilder.append(middleName).append(" ");
         }
         nameBuilder.append(lastName);
         return nameBuilder.toString(); //Shoon fixed
     }
 
     public String getDisplayName() {
-        return displayName; //bug wrong name format
+        return displayName;
     }
 
     public String getId() {

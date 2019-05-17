@@ -110,7 +110,7 @@ public class Role {
         this.missedVotesPct = CongressDao.getDoubleFromJson(jsonObject, "missed_votes_pct");
         this.votesWithPartyPct = CongressDao.getDoubleFromJson(jsonObject, "votes_with_party_pct");
         this.committees = Committee.getCommitteesFromJSON(CongressDao.getJSONArrayFromJson(jsonObject, "committees"));
-        this.subcommittees = Subcommittee.getSubCommitteesFromJSON(CongressDao.getJSONArrayFromJson(jsonObject, "subcommittees"));
+      //  this.subcommittees = Subcommittee.getSubCommitteesFromJSON(CongressDao.getJSONArrayFromJson(jsonObject, "subcommittees"));
     }
 
     static ArrayList<Role> getRolesFromJSON(JSONArray jsonArray) {
