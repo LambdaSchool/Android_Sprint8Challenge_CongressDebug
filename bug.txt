@@ -22,3 +22,5 @@ themeUtils
 Role
       //  this.subcommittees = Subcommittee.getSubCommitteesFromJSON(CongressDao.getJSONArrayFromJson(jsonObject, "subcommittees"));
 
+Erased all the committees related 
+
