@@ -22,7 +22,7 @@ public class OverviewListAdapter extends RecyclerView.Adapter<OverviewListAdapte
         public ViewHolder(View view) {
             super(view);
 
-            textListName = view.findViewById(R.id.text_list_name);
+            textListName = view.findViewById(R.id.text_list_name); //bug
             textListParty = view.findViewById(R.id.text_list_party);
             textListState = view.findViewById(R.id.text_list_state);
             cardParent   = view.findViewById(R.id.card_view);
@@ -47,7 +47,7 @@ public class OverviewListAdapter extends RecyclerView.Adapter<OverviewListAdapte
     public void onBindViewHolder(@NonNull OverviewListAdapter.ViewHolder holder, int position) {
         OfficialOverview data = dataList.get(position);
 
-        holder.textListName.setText(data.getDisplayName());
+        holder.textListName.setText(data.getDisplayName()); //bug wrong name
         holder.textListParty.setText(data.getParty());
         holder.textListState.setText(data.getState());
 
