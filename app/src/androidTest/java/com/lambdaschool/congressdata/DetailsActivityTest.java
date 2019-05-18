@@ -1,6 +1,7 @@
 package com.lambdaschool.congressdata;
 
 import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.rule.ActivityTestRule;
 
@@ -12,6 +13,7 @@ import org.junit.Test;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
+import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.AllOf.allOf;
@@ -25,7 +27,8 @@ public class DetailsActivityTest {
     public void setUp() throws Exception {
 
         Intents.init();
-        onView( allOf( withId( R.id.text_list_name ), withText( "Alma Adams" ) ) ).perform( click() );
+        onView( allOf( withId( R.id.text_list_name ), withText( "Ralph Abraham" ) ) ).perform( click() );
+       // onView(withId( R.id.layout_list )  ).perform( RecyclerViewActions.scrollTo(hasDescendant (withText( "James Baird" )) ) );
     }
 
     @Test
@@ -34,8 +37,29 @@ public class DetailsActivityTest {
 
     }
 
+    @Test
+    public void testTwitter() {
+        onView(withId( R.id.profile_twitter )).perform( click() );
+
+    }
+
+
+    @Test
+    public void testOffice() {
+        onView(withId( R.id.profile_map )).perform( click() );
+
+    }
+
+
+    @Test
+    public void testName() {
+        onView(withId( R.id.profile_name )).perform( click() );
+
+    }
+
+
     @After
-    public void onStart() {
+    public void onClose() {
 
         Intents.release();
     }
