@@ -55,9 +55,7 @@ public class Role {
     // SerializedName("votes_with_party_pct")
     private double votesWithPartyPct;
     // SerializedName("committees")
-    private List<Committee> committees = null;
-    // SerializedName("subcommittees")
-    private List<Subcommittee> subcommittees = null;
+
 
     public Role(String congress, String chamber, String title, String shortTitle, String state, String party, String leadershipRole, String fecCandidateId, String seniority, String district, boolean atLarge, String ocdId, String startDate, String endDate, String office, String phone, String fax, String contactForm, int billsSponsored, int billsCosponsored, double missedVotesPct, double votesWithPartyPct, List<Committee> committees, List<Subcommittee> subcommittees) {
         this.congress = congress;
@@ -82,8 +80,7 @@ public class Role {
         this.billsCosponsored = billsCosponsored;
         this.missedVotesPct = missedVotesPct;
         this.votesWithPartyPct = votesWithPartyPct;
-        this.committees = committees;
-        this.subcommittees = subcommittees;
+
     }
 
     public Role(JSONObject jsonObject) {
@@ -109,8 +106,8 @@ public class Role {
         this.billsCosponsored = CongressDao.getIntFromJson(jsonObject, "bills_cosponsored");
         this.missedVotesPct = CongressDao.getDoubleFromJson(jsonObject, "missed_votes_pct");
         this.votesWithPartyPct = CongressDao.getDoubleFromJson(jsonObject, "votes_with_party_pct");
-        this.committees = Committee.getCommitteesFromJSON(CongressDao.getJSONArrayFromJson(jsonObject, "committees"));
-        this.subcommittees = Subcommittee.getSubCommitteesFromJSON(CongressDao.getJSONArrayFromJson(jsonObject, "subcommittees"));
+      //  this.committees = Committee.getCommitteesFromJSON(CongressDao.getJSONArrayFromJson(jsonObject, "committees"));
+      //  this.subcommittees = Subcommittee.getSubCommitteesFromJSON(CongressDao.getJSONArrayFromJson(jsonObject, "subcommittees"));
     }
 
     static ArrayList<Role> getRolesFromJSON(JSONArray jsonArray) {
@@ -213,11 +210,5 @@ public class Role {
         return votesWithPartyPct;
     }
 
-    public List<Committee> getCommittees() {
-        return committees;
-    }
 
-    public List<Subcommittee> getSubcommittees() {
-        return subcommittees;
-    }
 }

@@ -14,7 +14,7 @@ public class OfficialOverview {
         this.lastName = lastName;
         this.party = party;
         this.state = state;
-        this.displayName = buildDisplayName();
+        this.displayName = buildDisplayName(); //bug wrong name format
         this.id = id;
     }
 
@@ -30,12 +30,12 @@ public class OfficialOverview {
 
     private String buildDisplayName() {
         StringBuilder nameBuilder = new StringBuilder();
-        nameBuilder.append(firstName);
+        nameBuilder.append(firstName+" "); //Shoon fixed spaced added
         if (!middleName.equals("null")) {
             nameBuilder.append(middleName).append(" ");
         }
         nameBuilder.append(lastName);
-        return nameBuilder.toString().toLowerCase();
+        return nameBuilder.toString(); //Shoon fixed
     }
 
     public String getDisplayName() {

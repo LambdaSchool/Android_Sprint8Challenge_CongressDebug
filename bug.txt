@@ -1,0 +1,26 @@
+Text name format
+Officailoverview    
+31       nameBuilder.append(firstName+" "); //Shoon fixed spaced added
+35        nameBuilder.append(middleName+" ").append(" "); //Shoon fixed sace added
+38        return nameBuilder.toString(); //Shoon fixed
+
+
+CongressDao
+15     public static final  String CONGRESS_NUMBER               = "116"; //Shoon fixed from 115 to 116
+
+
+
+DetailActivity
+97    //            profileCommitteeList.addView(getDefaultTextView(name)); //Shoon fixed hide committees
+101     //           profileSubcommitteeList.addView(getDefaultTextView(name));//Shoon fixed hide sub committees
+
+themeUtils
+ 58      if (cTheme == 1) { //Shoon fixed theme to white
+
+
+
+Role
+      //  this.subcommittees = Subcommittee.getSubCommitteesFromJSON(CongressDao.getJSONArrayFromJson(jsonObject, "subcommittees"));
+
+Erased all the committees related 
+

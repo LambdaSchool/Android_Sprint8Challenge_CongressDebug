@@ -103,10 +103,7 @@ public class CongresspersonProfile {
             }
         }
 
-        final List<Committee> committees = congresspersonDetails.getRoles().get(index).getCommittees();
-        this.setCommittees(committees);
-        final List<Subcommittee> subcommittees = congresspersonDetails.getRoles().get(index).getSubcommittees();
-        this.setSubcommittees(subcommittees);
+
     }
 
     private String buildDisplayName() {
@@ -137,35 +134,7 @@ public class CongresspersonProfile {
         }
     }
 
-    public ArrayList<String> getCommittees() {
-        return committees;
-    }
 
-    public void setCommittees(JSONArray committeesJson) {
-        this.committees = parseJsonList(committeesJson, COMMITTEE_DETAIL_TARGET);
-    }
-
-    public void setCommittees(List<Committee> committees) {
-        this.committees = new ArrayList<>();
-        for(Committee committee: committees) {
-            this.committees.add(committee.getName());
-        }
-    }
-
-    public ArrayList<String> getSubcommittees() {
-        return subcommittees;
-    }
-
-    public void setSubcommittees(JSONArray subcommitteesJson) {
-        this.subcommittees = this.committees = parseJsonList(subcommitteesJson, COMMITTEE_DETAIL_TARGET);;
-    }
-
-    public void setSubcommittees(List<Subcommittee> subcommittees) {
-        this.subcommittees = new ArrayList<>();
-        for(Subcommittee subcommittee: subcommittees) {
-            this.subcommittees.add(subcommittee.getName());
-        }
-    }
 
     private ArrayList<String> parseJsonList(JSONArray array, String target) {
         ArrayList<String> result = new ArrayList<>();

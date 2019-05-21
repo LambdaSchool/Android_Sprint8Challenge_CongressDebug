@@ -12,7 +12,7 @@ public final class CongressDao {
     private static final String BASE_URL = "https://api.propublica.org/congress/v1/";
 
     private static final String URL_MEMBERS_HOUSE_CALIFORNIA  = BASE_URL + "members/house/CA/current.json";
-    public static final  String CONGRESS_NUMBER               = "115";
+    public static final  String CONGRESS_NUMBER               = "116"; //Shoon fixed from 115 to 116
     private static final String URL_MEMBERS_HOUSE_ALL = BASE_URL + CONGRESS_NUMBER + "/house/members.json";
     private static final String URL_MEMBERS_SENATE_CALIFORNIA = BASE_URL + "members/senate/CA/current.json";
     private static final String URL_MEMBERS_SENATE_ALL        = BASE_URL + CONGRESS_NUMBER + "/senate/members.json";
