@@ -28,7 +28,7 @@ import org.junit.runners.MethodSorters
  * missedVotesPct: 36.73
  * office: 417 Cannon House Office Building
  * party: Republican
- * phone: 202-225-8490
+ * phone: 202-225-4306
  * state: LA
  * twitterAccount: RepAbraham
  * votesWithPartyPct: 97.56
@@ -71,6 +71,12 @@ class DetailsActivityTest {
     fun profilePartyTextView_CorrectParty() {
 
         onView(withId(R.id.profile_party)).check(matches(withText("Republican")))
+
+    }
+    @Test
+    fun profilePhoneTextView_CorrectParty() {
+
+        onView(withId(R.id.profile_phone)).check(matches(withText("202-225-4306")))
 
     }
 
