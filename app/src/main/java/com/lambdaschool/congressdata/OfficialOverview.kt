@@ -1,8 +1,9 @@
 package com.lambdaschool.congressdata
 
+import android.annotation.SuppressLint
 import com.lambdaschool.congressdataapiaccess.CongresspersonOverview
 
-class OfficialOverview {
+open class OfficialOverview {
     private var firstName: String? = null
     private var middleName: String? = null
     private var lastName: String? = null
@@ -25,23 +26,25 @@ class OfficialOverview {
         this.id = id
     }
 
-    constructor(congresspersonOverview: CongresspersonOverview) {
-        this.firstName = congresspersonOverview.firstName
-        this.middleName = congresspersonOverview.middleName
-        this.lastName = congresspersonOverview.lastName
-        this.party = congresspersonOverview.party
-        this.state = congresspersonOverview.state
-        this.displayName = buildDisplayName()
-        this.id = congresspersonOverview.id
-    }
+        constructor(congresspersonOverview: CongresspersonOverview) {
+            this.firstName = congresspersonOverview.firstName
+            this.middleName = congresspersonOverview.middleName
+            this.lastName = congresspersonOverview.lastName
+            this.party = congresspersonOverview.party
+            this.state = congresspersonOverview.state
+            this.displayName = buildDisplayName()
+            this.id = congresspersonOverview.id
 
-    private fun buildDisplayName(): String {
-        val nameBuilder = StringBuilder()
-        nameBuilder.append(firstName)
-        if (middleName != "null") {
-            nameBuilder.append(middleName).append(" ")
         }
-        nameBuilder.append(lastName)
-        return nameBuilder.toString().toLowerCase()
-    }
-}
+            @SuppressLint("DefaultLocale")
+            private fun buildDisplayName(): String {
+                val nameBuilder = StringBuilder()
+                nameBuilder.append(firstName)
+                if (middleName != "null") {
+                    nameBuilder.append(middleName).append(" ")
+                }
+                nameBuilder.append(lastName)
+                return nameBuilder.toString().toLowerCase()
+            }
+        }
+

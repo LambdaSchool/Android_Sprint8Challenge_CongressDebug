@@ -14,27 +14,20 @@ class OverviewListAdapter(private val dataList: ArrayList<OfficialOverview>) : R
     private var context: Context? = null
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var textListName: TextView
-        var textListParty: TextView
-        var textListState: TextView
-        var cardParent: ViewGroup
+        var textListName: TextView = view.findViewById(R.id.text_list_name)
+        var textListParty: TextView = view.findViewById(R.id.text_list_party)
+        var textListState: TextView = view.findViewById(R.id.text_list_state)
+        var cardParent: ViewGroup = view.findViewById(R.id.card_view)
 
-        init {
-
-            textListName = view.findViewById(R.id.text_list_name)
-            textListParty = view.findViewById(R.id.text_list_party)
-            textListState = view.findViewById(R.id.text_list_state)
-            cardParent = view.findViewById(R.id.card_view)
-        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, i: Int): OverviewListAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, i: Int): ViewHolder {
         context = parent.context
         val view = LayoutInflater.from(parent.context).inflate(R.layout.congressperson_list_layout, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: OverviewListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = dataList[position]
 
         holder.textListName.text = data.displayName

@@ -6,7 +6,7 @@ import android.arch.lifecycle.ViewModel
 class CongresspersonProfileViewModel(var id: String?) : ViewModel() {
     var profile: LiveData<CongresspersonProfile>? = null
     get() {
-        return if (field == null) {
+        return if (field != null) {
             loadProfile()
         } else {
             field
