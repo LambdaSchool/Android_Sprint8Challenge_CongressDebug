@@ -15,3 +15,27 @@ view model was structured wrong
         viewModel = CongresspersonProfileViewModel(memberId)
 
 Successfully created first UI test to see if it returns correct details for the person clicked
+
+found another bug in null pointer to middle name -> fixed
+
+
+Display name builder was not matching with Unit Tests, Its matching now :
+
+ private fun buildDisplayName(): String {
+        val nameBuilder = StringBuilder()
+        nameBuilder.append(firstName).append(" ")
+        if (middleName != null) {
+            nameBuilder.append(middleName).append(" ")
+        }
+        nameBuilder.append(lastName)
+        return nameBuilder.toString().toLowerCase()
+    }
+           /* private fun buildDisplayName(): String {
+                val nameBuilder = StringBuilder()
+                nameBuilder.append(firstName)
+                if (middleName != null) {
+                    nameBuilder.append(middleName).append(" ")
+                }
+                nameBuilder.append(lastName)
+                return nameBuilder.toString().toLowerCase()
+            }*/

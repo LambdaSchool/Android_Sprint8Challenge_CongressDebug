@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         layoutList!!.layoutManager = layoutManager
 
 
-        viewModel = ViewModelProviders.of(this).get(CongresspersonListViewModel::class.java!!)
+        viewModel = ViewModelProviders.of(this).get(CongresspersonListViewModel::class.java)
 
         viewModel.overviewList?.observe(this, Observer { overviewList ->
             runOnUiThread {

@@ -1,6 +1,5 @@
 package com.lambdaschool.congressdata
 
-import android.annotation.SuppressLint
 import com.lambdaschool.congressdataapiaccess.CongresspersonOverview
 
 open class OfficialOverview {
@@ -16,7 +15,7 @@ open class OfficialOverview {
     var id: String? = null
         private set
 
-    constructor(firstName: String, middleName: String, lastName: String, party: String, state: String, id: String) {
+    constructor(firstName: String, lastName: String, middleName: String, party: String, state: String, id: String) {
         this.firstName = firstName
         this.middleName = middleName
         this.lastName = lastName
@@ -36,15 +35,23 @@ open class OfficialOverview {
             this.id = congresspersonOverview.id
 
         }
-            @SuppressLint("DefaultLocale")
-            private fun buildDisplayName(): String {
+    private fun buildDisplayName(): String {
+        val nameBuilder = StringBuilder()
+        nameBuilder.append(firstName).append(" ")
+        if (middleName != null) {
+            nameBuilder.append(middleName).append(" ")
+        }
+        nameBuilder.append(lastName)
+        return nameBuilder.toString().toLowerCase()
+    }
+           /* private fun buildDisplayName(): String {
                 val nameBuilder = StringBuilder()
                 nameBuilder.append(firstName)
-                if (middleName != "null") {
+                if (middleName != null) {
                     nameBuilder.append(middleName).append(" ")
                 }
                 nameBuilder.append(lastName)
                 return nameBuilder.toString().toLowerCase()
-            }
+            }*/
         }
 
