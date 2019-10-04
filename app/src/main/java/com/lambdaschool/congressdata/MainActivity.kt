@@ -85,19 +85,19 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    override fun onStart() {
-        if (themeId != themeUtils.getcTheme(this)) {
-            themeUtils.refreshActivity(this)
-        }
-        super.onStart()
-    }
+  //  override fun onStart() {
+    //    if (themeId != themeUtils.getcTheme(this)) {
+ //           themeUtils.refreshActivity(this)
+   //     }
+  //      super.onStart()
+  //  }
 
-    override fun onResume() {
-        if (themeId != themeUtils.getcTheme(this)) {
-            themeUtils.refreshActivity(this)
-        }
-        super.onResume()
-    }
+  //  override fun onResume() {
+    //    if (themeId != themeUtils.getcTheme(this)) {
+    //        themeUtils.refreshActivity(this)
+   //     }
+ //       super.onResume()
+  //  }
 
     /**
      * This method generates default TextView objects for the congressperson list in this activity.
@@ -106,19 +106,19 @@ class MainActivity : AppCompatActivity() {
      * @param id   api id for the congressperson
      * @return TextView object with the text and tag set as provided
      */
-    private fun getDefaultTextView(text: String, id: String): TextView {
-        val dataView = TextView(context)
-        dataView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24f)
-        dataView.setPadding(10, 20, 10, 20)
-        dataView.typeface = Typeface.DEFAULT_BOLD
-        dataView.text = text
-        dataView.tag = id
-
-        dataView.setOnClickListener { view ->
-            val intent = Intent(context, DetailsActivity::class.java)
-            intent.putExtra("id", view.tag.toString())
-            startActivity(intent)
-        }
-        return dataView
-    }
+  //  private fun getDefaultTextView(text: String, id: String): TextView {
+  //      val dataView = TextView(context)
+  //      dataView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24f)
+  //      dataView.setPadding(10, 20, 10, 20)
+  //      dataView.typeface = Typeface.DEFAULT_BOLD
+  //      dataView.text = text
+  //      dataView.tag = id
+//
+  //      dataView.setOnClickListener { view ->
+  //          val intent = Intent(context, DetailsActivity::class.java)
+  //          intent.putExtra("id", view.tag.toString())
+  //          startActivity(intent)
+  //      }
+  //      return dataView
+  //  }
 }

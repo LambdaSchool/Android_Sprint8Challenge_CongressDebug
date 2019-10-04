@@ -70,10 +70,10 @@ class DetailsActivity : AppCompatActivity() {
 
 
         (findViewById<View>(R.id.profile_name) as TextView).setOnClickListener { themeUtils.nextTheme(activity!!) }
-    }
 
-    override fun onStart() {
-        super.onStart()
+
+  //  override fun onStart() {
+    //    super.onStart()
 
         viewModel.id = memberId
 
@@ -112,7 +112,7 @@ class DetailsActivity : AppCompatActivity() {
                 }
             }
         })
-        }
+       }
 
                 /*@Override
                 protected void onCreate(Bundle savedInstanceState) {

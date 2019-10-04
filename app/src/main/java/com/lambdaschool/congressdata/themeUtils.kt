@@ -37,21 +37,21 @@ object themeUtils {
         activity.startActivity(intent)
     }
 
-    fun refreshActivity(activity: Activity) {
-        val intent = activity.intent
-        activity.finish()
-        activity.startActivity(intent)
-    }
+  //  fun refreshActivity(activity: Activity) {
+  //      val intent = activity.intent
+  //      activity.finish()
+  //      activity.startActivity(intent)
+  //  }
 
     fun onActivityCreateSetTheme(activity: Activity) {
         activity.setTheme(cTheme)
     }
 
-    fun getcTheme(activity: Activity): Int {
-        if (cTheme == 0) {
-            prefs = activity.getSharedPreferences("prefs", Context.MODE_PRIVATE)
-            cTheme = prefs!!.getInt("Theme", R.style.AppTheme)
-        }
-        return cTheme
-    }
+  //  fun getcTheme(activity: Activity): Int {
+  //      if (cTheme == 0) {
+  //          prefs = activity.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+  //          cTheme = prefs!!.getInt("Theme", R.style.AppTheme)
+  //      }
+  //      return cTheme
+  //  }
 }

@@ -7,7 +7,7 @@ open class OfficialOverview {
     private var middleName: String? = null
     private var lastName: String? = null
     var party: String? = null
-        private set
+
     var state: String? = null
         private set
     var displayName: String? = null
