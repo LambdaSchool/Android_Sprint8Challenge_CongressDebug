@@ -13,3 +13,5 @@ null pointers were wrong in places, changed to correct null pointer call
 view model was structured wrong
       //  viewModel = ViewModelProviders.of(this).get(CongresspersonProfileViewModel::class.java)
         viewModel = CongresspersonProfileViewModel(memberId)
+
+Successfully created first UI test to see if it returns correct details for the person clicked
