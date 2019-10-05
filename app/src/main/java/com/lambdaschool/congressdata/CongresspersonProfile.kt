@@ -13,9 +13,9 @@ import org.json.JSONException
 import java.util.ArrayList
 
 class CongresspersonProfile(
-        val firstName: String,
-        val middleName: String,
-        val lastName: String,
+        private var firstName: String,
+        var middleName: String,
+        var lastName: String,
         var party: String,
         state: String,
         val id: String,
