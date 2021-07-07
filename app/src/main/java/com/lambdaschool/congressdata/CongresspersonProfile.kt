@@ -13,22 +13,22 @@ import org.json.JSONException
 import java.util.ArrayList
 
 class CongresspersonProfile(
-        val firstName: String,
-        val middleName: String,
-        val lastName: String,
+        private var firstName: String,
+        var middleName: String,
+        var lastName: String,
         var party: String,
-        val state: String,
+        state: String,
         val id: String,
         val twitterAccount: String,
         val facebookAccount: String,
-        val district: String,
+        private var district: String,
         val phone: String, missedVotesPct: String,
         val office: String, votesWithPartyPct: String) {
 
     val displayName: String
-    val location: String
-    val missedVotesPct: Float
-    private val votesWithPartyPct: Float
+    var location: String = "$state - District $district"
+    private var missedVotesPct: Float = java.lang.Float.parseFloat(missedVotesPct)
+    private var votesWithPartyPct: Float = java.lang.Float.parseFloat(votesWithPartyPct)
     var committees: ArrayList<String>? = null
         private set
     var subcommittees: ArrayList<String>? = null
@@ -73,9 +73,9 @@ class CongresspersonProfile(
             congresspersonDetails.facebookAccount,
             congresspersonDetails.roles[0].district,
             congresspersonDetails.roles[0].phone,
-            java.lang.Double.toString(congresspersonDetails.roles[0].missedVotesPct),
+            congresspersonDetails.roles[0].missedVotesPct.toString(),
             congresspersonDetails.roles[0].office,
-            java.lang.Double.toString(congresspersonDetails.roles[0].votesWithPartyPct)) {
+            congresspersonDetails.roles[0].votesWithPartyPct.toString()) {
 
         //get correct role index
         var index = 0
@@ -102,10 +102,10 @@ class CongresspersonProfile(
         return nameBuilder.toString()
     }
 
-    fun setCommittees(committeesJson: JSONArray) {
-        this.committees = parseJsonList(committeesJson, COMMITTEE_DETAIL_TARGET)
-    }
-
+  //  fun setCommittees(committeesJson: JSONArray) {
+  //      this.committees = parseJsonList(committeesJson, COMMITTEE_DETAIL_TARGET)
+  //  }
+//
     fun setCommittees(committees: List<Committee>) {
         this.committees = ArrayList()
         for (committee in committees) {
@@ -113,38 +113,38 @@ class CongresspersonProfile(
         }
     }
 
-    fun setSubcommittees(subcommitteesJson: JSONArray) {
-        this.committees = parseJsonList(subcommitteesJson, COMMITTEE_DETAIL_TARGET)
-        this.subcommittees = this.committees
-    }
+ // fun setSubcommittees(subcommitteesJson: JSONArray) {
+ //     this.committees = parseJsonList(subcommitteesJson, COMMITTEE_DETAIL_TARGET)
+ //     this.subcommittees = this.committees
+ // }
 
-    fun setSubcommittees(subcommittees: List<Subcommittee>) {
+    private fun setSubcommittees(subcommittees: List<Subcommittee>) {
         this.subcommittees = ArrayList()
         for (subcommittee in subcommittees) {
             this.subcommittees!!.add(subcommittee.name)
         }
     }
 
-    private fun parseJsonList(array: JSONArray, target: String): ArrayList<String> {
-        val result = ArrayList<String>()
+   //ivate fun parseJsonList(array: JSONArray, target: String): ArrayList<String> {
+   //  val result = ArrayList<String>()
 
-        for (i in 0 until array.length()) {
-            try {
-                result.add(array.getJSONObject(i).getString(target))
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
+   //  for (i in 0 until array.length()) {
+   //      try {
+   //          result.add(array.getJSONObject(i).getString(target))
+   //      } catch (e: JSONException) {
+   //          e.printStackTrace()
+   //      }
 
-        }
+   //  }
 
-        return result
-    }
+  //      return result
+  //  }
 
     companion object {
 
-        val INDEPENDENT = "Independent"
-        val REPUBLICAN = "Republican"
-        val DEMOCRAT = "Democrat"
-        val COMMITTEE_DETAIL_TARGET = "name"
+        const val INDEPENDENT = "Independent"
+        const val REPUBLICAN = "Republican"
+        const val DEMOCRAT = "Democrat"
+      //  val COMMITTEE_DETAIL_TARGET = "name"
     }
 }

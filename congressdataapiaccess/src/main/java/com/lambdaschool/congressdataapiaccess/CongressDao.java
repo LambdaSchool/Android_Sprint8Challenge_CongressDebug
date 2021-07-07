@@ -93,7 +93,7 @@ public final class CongressDao {
         return value;
     }
 
-    public static boolean getBooleanFromJson(JSONObject jsonObject, String id) {
+    static boolean getBooleanFromJson(JSONObject jsonObject, String id) {
         boolean value = false;
         try {
             value = jsonObject.getBoolean(id);
@@ -103,7 +103,7 @@ public final class CongressDao {
         return value;
     }
 
-    public static String getStringFromJson(JSONObject jsonObject, String id) {
+    static String getStringFromJson(JSONObject jsonObject, String id) {
         String value = "";
         try {
             value = jsonObject.getString(id);

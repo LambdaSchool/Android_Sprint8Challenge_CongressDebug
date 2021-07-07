@@ -44,12 +44,17 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_details_view)
+
+
+
         context = this
+
 
         val intent = intent
         memberId = intent.getStringExtra("id")
 
-        viewModel = ViewModelProviders.of(this).get(CongresspersonProfileViewModel::class.java)
+      //  viewModel = ViewModelProviders.of(this).get(CongresspersonProfileViewModel::class.java)
+        viewModel = CongresspersonProfileViewModel(memberId)
 
         profileImage = findViewById(R.id.profile_image)
         profileName = findViewById(R.id.profile_name)
@@ -65,10 +70,10 @@ class DetailsActivity : AppCompatActivity() {
 
 
         (findViewById<View>(R.id.profile_name) as TextView).setOnClickListener { themeUtils.nextTheme(activity!!) }
-    }
 
-    override fun onStart() {
-        super.onStart()
+
+  //  override fun onStart() {
+    //    super.onStart()
 
         viewModel.id = memberId
 
@@ -76,44 +81,38 @@ class DetailsActivity : AppCompatActivity() {
             runOnUiThread {
                 assert(profile != null)
                 profileImage!!.setImageBitmap(profile!!.image)
-                profileName!!.setText(profile!!.displayName)
-                profileParty!!.setText(profile!!.party)
-                profileDistrict!!.setText(profile!!.location)
-                profileTwitter!!.text = Html.fromHtml("<a href=\"https://twitter.com/" + profile!!.twitterAccount + "\">Twitter</a>")
-                profileFacebook!!.text = Html.fromHtml("<a href=\"https://www.facebook.com/" + profile!!.facebookAccount + "/\">Facebook</a>")
-                profileMap!!.text = Html.fromHtml("<a href=\"https://www.google.com/maps/search/" + profile!!.office.replace(" ", "-") + "\">Office</a>")
-                profilePhone!!.setText(profile!!.phone)
+                profileName!!.text = profile.displayName
+                profileParty!!.text = profile.party
+                profileDistrict!!.text = profile.location
+                profileTwitter!!.text = Html.fromHtml("<a href=\"https://twitter.com/" + profile.twitterAccount + "\">Twitter</a>")
+                profileFacebook!!.text = Html.fromHtml("<a href=\"https://www.facebook.com/" + profile.facebookAccount + "/\">Facebook</a>")
+                profileMap!!.text = Html.fromHtml("<a href=\"https://www.google.com/maps/search/" + profile.office.replace(" ", "-") + "\">Office</a>")
+                profilePhone!!.text = profile.phone
 
 
-                profileVotingBar!!.progress = profile!!.primaryProgress.toInt()
-                profileVotingBar!!.secondaryProgress = profile!!.secondaryProgress.toInt()
+                profileVotingBar!!.progress = profile.primaryProgress.toInt()
+                profileVotingBar!!.secondaryProgress = profile.secondaryProgress.toInt()
 
-                for (name in profile!!.committees!!) {
+                for (name in profile.committees!!) {
                     profileCommitteeList!!.addView(getDefaultTextView(name))
                 }
 
-                for (name in profile!!.subcommittees!!) {
+                for (name in profile.subcommittees!!) {
                     profileSubcommitteeList!!.addView(getDefaultTextView(name))
                 }
 
                 profileTwitter!!.setOnClickListener {
-                    if (profile!!.twitterAccount != "null") {
-                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + profile!!.twitterAccount)))
-                    }
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + profile.twitterAccount)))
                 }
                 profileFacebook!!.setOnClickListener {
-                    if (profile!!.facebookAccount != "null") {
-                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + profile!!.facebookAccount)))
-                    }
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + profile.facebookAccount)))
                 }
                 profileMap!!.setOnClickListener {
-                    if (profile!!.office != "null") {
-                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/" + profile!!.office)))
-                    }
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/" + profile.office)))
                 }
             }
         })
-        }
+       }
 
                 /*@Override
                 protected void onCreate(Bundle savedInstanceState) {
